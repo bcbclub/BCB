@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,12 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111111; }
         .font-anton { font-family: 'Anton', sans-serif; letter-spacing: 0.02em; }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.97) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-modal { animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .slide-fade { transition: opacity 0.7s ease-in-out, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
     </style>
 </head>
 <body class="bg-white text-black antialiased selection:bg-black selection:text-white">
@@ -17,9 +23,9 @@
     <!-- TOP MINI BAR -->
     <div class="bg-[#f5f5f5] text-[11px] px-6 py-2 flex justify-between items-center border-b border-gray-200">
         <div class="flex items-center space-x-4">
-            <a href="#" class="hover:opacity-75 font-bold tracking-tight text-xs uppercase" title="BCB Club">BCB Club</a>
+            <a href="#" class="hover:opacity-75 font-bold tracking-tight text-xs uppercase transition-opacity">BCB Club</a>
             <span class="text-gray-300">|</span>
-            <a href="#" class="hover:opacity-75 font-bold tracking-tight text-xs uppercase" title="BCB Cook">BCB Cook</a>
+            <a href="#" class="hover:opacity-75 font-bold tracking-tight text-xs uppercase transition-opacity">BCB Cook</a>
         </div>
         <div class="flex items-center space-x-5 font-medium text-gray-700">
             <a href="#" class="hover:text-black transition-colors">A propos de BCB Inc.</a>
@@ -28,16 +34,16 @@
             <span>|</span>
             <a href="#" class="hover:text-black transition-colors">Rejoins le Club de la BCB !</a>
             <span>|</span>
-            <button onclick="openAuthModal()" class="hover:text-black transition-colors font-semibold">S'identifier</button>
+            <button onclick="openAuthModal()" class="hover:text-black transition-colors font-semibold cursor-pointer">S'identifier</button>
         </div>
     </div>
 
     <!-- MAIN NAVBAR -->
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
         <div class="max-w-[1920px] mx-auto px-8 h-16 flex items-center justify-between">
             <!-- User Login Icon Logo Replacement -->
             <div class="flex items-center space-x-3">
-                <button onclick="openAuthModal()" class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-900 text-xl transition-colors cursor-pointer" title="Connexion / Compte">
+                <button onclick="openAuthModal()" class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-900 text-xl transition-all duration-300 hover:scale-105 cursor-pointer" title="Connexion / Compte">
                     <i class="fa-regular fa-user"></i>
                 </button>
             </div>
@@ -58,9 +64,9 @@
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-gray-500">
                         <i class="fa-solid fa-magnifying-glass text-xs"></i>
                     </span>
-                    <input type="text" id="search-input" placeholder="Rechercher une actu..." oninput="handleSearchInput(event)" class="bg-[#f5f5f5] text-sm rounded-full pl-10 pr-4 py-2 w-44 lg:w-56 focus:outline-none focus:bg-white focus:ring-1 focus:ring-gray-400 transition-all">
+                    <input type="text" id="search-input" placeholder="Rechercher une actu..." oninput="handleSearchInput(event)" class="bg-[#f5f5f5] text-sm rounded-full pl-10 pr-4 py-2 w-44 lg:w-56 focus:outline-none focus:bg-white focus:ring-1 focus:ring-gray-400 transition-all duration-300">
                 </div>
-                <button class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-900 text-lg transition-colors">
+                <button class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-900 text-lg transition-all duration-300 hover:scale-105 cursor-pointer">
                     <i class="fa-regular fa-heart"></i>
                 </button>
             </div>
@@ -68,11 +74,11 @@
     </nav>
 
     <!-- SEARCH RESULTS MODAL / OVERLAY -->
-    <div id="search-modal" class="fixed inset-x-0 top-16 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg hidden transition-all max-h-[80vh] overflow-y-auto">
+    <div id="search-modal" class="fixed inset-x-0 top-16 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xl hidden transition-all duration-300 max-h-[80vh] overflow-y-auto">
         <div class="max-w-5xl mx-auto px-8 py-6">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="font-anton text-2xl tracking-tight">RÉSULTATS DE RECHERCHE</h3>
-                <button onclick="closeSearchModal()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700">
+                <button onclick="closeSearchModal()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 transition-transform hover:scale-105 cursor-pointer">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -84,19 +90,19 @@
 
     <!-- HERO BANNER DYNAMIC INTERNATIONAL SPORTS NEWS SLIDER -->
     <header class="max-w-[1920px] mx-auto px-4 md:px-8 py-6">
-        <div id="hero-slider-container" class="relative rounded-2xl overflow-hidden shadow-sm bg-neutral-900 group min-h-[580px] md:min-h-[700px] flex flex-col justify-end p-8 md:p-16 transition-all duration-700">
+        <div id="hero-slider-container" class="relative rounded-3xl overflow-hidden shadow-lg bg-neutral-900 group min-h-[580px] md:min-h-[700px] flex flex-col justify-end p-8 md:p-16 transition-all duration-700">
             
-            <!-- Background Image with dark overlay gradient -->
-            <div class="absolute inset-0 z-0">
+            <!-- Background Image with dark overlay gradient & smooth scaling -->
+            <div class="absolute inset-0 z-0 overflow-hidden">
                 <img id="hero-bg-img" src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1800&auto=format&fit=crop" 
                      alt="Actu Sport International" 
                      class="w-full h-full object-cover object-center opacity-85 scale-100 group-hover:scale-105 transition-transform duration-1000">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
             </div>
 
-            <!-- Content Overlay -->
-            <div class="relative z-10 max-w-2xl text-white">
-                <span id="hero-badge" class="inline-block bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase px-3 py-1 rounded-full mb-4 tracking-wider">Flash Actu International</span>
+            <!-- Content Overlay with entry animation -->
+            <div id="hero-content-box" class="relative z-10 max-w-2xl text-white slide-fade">
+                <span id="hero-badge" class="inline-block bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase px-3.5 py-1.5 rounded-full mb-4 tracking-wider shadow-sm">Flash Actu International</span>
                 <h1 id="hero-title" class="font-anton text-4xl sm:text-5xl md:text-7xl uppercase tracking-tight leading-[0.9] mb-6 drop-shadow-md">
                     TOUT SE JOUE DANS <br>LA TÊTE
                 </h1>
@@ -104,21 +110,21 @@
                     Reste focus avant chaque compétition avec les dernières actualités sportives internationales en direct.
                 </p>
                 <div>
-                    <button id="hero-btn" onclick='openArticle(sportsNews[currentSlideIndex])' class="bg-white hover:bg-gray-200 text-black font-bold px-7 py-3 rounded-full text-sm uppercase tracking-wide transition-all shadow-lg cursor-pointer">
+                    <button id="hero-btn" onclick='openArticle(sportsNews[currentSlideIndex])' class="bg-white hover:bg-gray-200 text-black font-bold px-8 py-3.5 rounded-full text-sm uppercase tracking-wide transition-all duration-300 shadow-xl hover:scale-105 cursor-pointer">
                         Découvrir
                     </button>
                 </div>
             </div>
 
             <!-- Carousel Controls at bottom right -->
-            <div class="absolute bottom-6 right-6 z-20 flex items-center space-x-2 bg-black/40 backdrop-blur-md p-1.5 rounded-full border border-white/10">
-                <button id="slider-pause-btn" onclick="togglePauseSlider()" class="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all cursor-pointer" title="Pause / Lecture">
+            <div class="absolute bottom-6 right-6 z-20 flex items-center space-x-2 bg-black/40 backdrop-blur-md p-1.5 rounded-full border border-white/10 shadow-lg">
+                <button id="slider-pause-btn" onclick="togglePauseSlider()" class="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" title="Pause / Lecture">
                     <i id="pause-icon" class="fa-solid fa-pause text-xs"></i>
                 </button>
-                <button onclick="prevSlide()" class="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all cursor-pointer" title="Actualité précédente">
+                <button onclick="prevSlide()" class="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" title="Actualité précédente">
                     <i class="fa-solid fa-chevron-left text-xs"></i>
                 </button>
-                <button onclick="nextSlide()" class="w-9 h-9 rounded-full bg-white hover:bg-gray-200 text-black flex items-center justify-center transition-all shadow-md cursor-pointer" title="Actualité suivante">
+                <button onclick="nextSlide()" class="w-9 h-9 rounded-full bg-white hover:bg-gray-200 text-black flex items-center justify-center transition-all duration-300 shadow-md hover:scale-105 cursor-pointer" title="Actualité suivante">
                     <i class="fa-solid fa-chevron-right text-xs"></i>
                 </button>
             </div>
@@ -132,12 +138,12 @@
     </header>
 
     <!-- TRENDING SECTION (Secondary International News) -->
-    <section class="max-w-[1920px] mx-auto px-4 md:px-8 py-12">
+    <section class="max-w-[1920px] mx-auto px-4 md:px-8 py-16">
         <div class="flex justify-between items-center mb-8">
             <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Tendances (Actualités secondaires)</h2>
             <div class="flex space-x-2">
-                <button class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-black transition-colors"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="w-10 h-10 rounded-full bg-gray-900 hover:bg-black text-white flex items-center justify-center transition-colors"><i class="fa-solid fa-chevron-right"></i></button>
+                <button class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-black transition-all hover:scale-105 cursor-pointer"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="w-10 h-10 rounded-full bg-gray-900 hover:bg-black text-white flex items-center justify-center transition-all hover:scale-105 cursor-pointer"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
 
@@ -147,9 +153,9 @@
     </section>
 
     <!-- ARTICLE READER MODAL -->
-    <div id="article-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white text-black rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl p-8 animate-in fade-in zoom-in duration-200">
-            <button onclick="closeArticleModal()" class="absolute top-6 right-6 text-gray-500 hover:text-black text-xl w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-colors z-10 cursor-pointer">
+    <div id="article-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto transition-opacity duration-300">
+        <div class="bg-white text-black rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl p-8 animate-modal">
+            <button onclick="closeArticleModal()" class="absolute top-6 right-6 text-gray-500 hover:text-black text-xl w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-all duration-300 hover:scale-105 z-10 cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="article-modal-content">
@@ -159,69 +165,69 @@
     </div>
 
     <!-- FUN SPORT CATEGORIES SECTION -->
-    <section class="max-w-[1920px] mx-auto px-4 md:px-8 py-16 bg-[#f9f9f9] rounded-3xl my-12">
+    <section class="max-w-[1920px] mx-auto px-4 md:px-8 py-16 bg-[#f9f9f9] rounded-3xl my-12 shadow-sm">
         <div class="text-center mb-10">
             <span class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 block">Explorer par univers</span>
             <h2 class="font-anton text-3xl md:text-4xl uppercase tracking-tight">Catégories & Disciplines Sportives</h2>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div onclick="filterByCategory('Football')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">⚽</span>
+            <div onclick="filterByCategory('Football')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">⚽</span>
                 <h4 class="font-bold text-sm">Football</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Le roi des stades</span>
             </div>
-            <div onclick="filterByCategory('Basketball')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🏀</span>
+            <div onclick="filterByCategory('Basketball')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏀</span>
                 <h4 class="font-bold text-sm">Basketball</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Dunks & Parquets</span>
             </div>
-            <div onclick="filterByCategory('Tennis')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🎾</span>
+            <div onclick="filterByCategory('Tennis')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🎾</span>
                 <h4 class="font-bold text-sm">Tennis</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Aces & Match points</span>
             </div>
-            <div onclick="filterByCategory('Running')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🏃‍♂️</span>
+            <div onclick="filterByCategory('Running')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏃‍♂️</span>
                 <h4 class="font-bold text-sm">Running</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Chrono & Endurance</span>
             </div>
-            <div onclick="filterByCategory('Formule 1')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🏎️</span>
+            <div onclick="filterByCategory('Formule 1')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏎️</span>
                 <h4 class="font-bold text-sm">Formule 1</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Vitesse & Piste</span>
             </div>
-            <div onclick="filterByCategory('Cyclisme')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🚴‍♂️</span>
+            <div onclick="filterByCategory('Cyclisme')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🚴‍♂️</span>
                 <h4 class="font-bold text-sm">Cyclisme</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Cols & Échappées</span>
             </div>
-            <div onclick="filterByCategory('Rugby')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🏉</span>
+            <div onclick="filterByCategory('Rugby')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏉</span>
                 <h4 class="font-bold text-sm">Rugby</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Combats & Essais</span>
             </div>
-            <div onclick="filterByCategory('Natation')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🏊‍♂️</span>
+            <div onclick="filterByCategory('Natation')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏊‍♂️</span>
                 <h4 class="font-bold text-sm">Natation</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Bassins & Records</span>
             </div>
-            <div onclick="filterByCategory('Boxe')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🥊</span>
+            <div onclick="filterByCategory('Boxe')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🥊</span>
                 <h4 class="font-bold text-sm">Boxe & MMA</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Combats épiques</span>
             </div>
-            <div onclick="filterByCategory('Skate')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🛹</span>
+            <div onclick="filterByCategory('Skate')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🛹</span>
                 <h4 class="font-bold text-sm">Skate & Surf</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Glisse & Tricks</span>
             </div>
-            <div onclick="filterByCategory('Fitness')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🏋️‍♂️</span>
+            <div onclick="filterByCategory('Fitness')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏋️‍♂️</span>
                 <h4 class="font-bold text-sm">Fitness</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Force & Training</span>
             </div>
-            <div onclick="filterByCategory('Esport')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group">
-                <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🎮</span>
+            <div onclick="filterByCategory('Esport')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🎮</span>
                 <h4 class="font-bold text-sm">Esport</h4>
                 <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Compétition geek</span>
             </div>
@@ -230,8 +236,8 @@
 
     <!-- AUTHENTICATION MODAL (Connection & Registration) -->
     <div id="auth-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white text-black rounded-3xl p-8 max-w-md w-full relative shadow-2xl animate-in fade-in zoom-in duration-200">
-            <button onclick="closeAuthModal()" class="absolute top-6 right-6 text-gray-400 hover:text-black text-xl w-8 h-8 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer">
+        <div class="bg-white text-black rounded-3xl p-8 max-w-md w-full relative shadow-2xl animate-modal">
+            <button onclick="closeAuthModal()" class="absolute top-6 right-6 text-gray-400 hover:text-black text-xl w-8 h-8 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-all hover:scale-105 cursor-pointer">
                 <i class="fa-solid fa-xmark text-sm"></i>
             </button>
             
@@ -260,7 +266,7 @@
                     <label class="block text-xs uppercase font-bold text-gray-600 mb-1.5">Mot de passe</label>
                     <input type="password" id="user-password" required placeholder="••••••••" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors">
                 </div>
-                <button type="submit" id="auth-submit-btn" class="w-full bg-black hover:bg-gray-800 text-white font-bold py-3.5 rounded-full text-sm uppercase tracking-wide transition-all shadow-lg cursor-pointer">
+                <button type="submit" id="auth-submit-btn" class="w-full bg-black hover:bg-gray-800 text-white font-bold py-3.5 rounded-full text-sm uppercase tracking-wide transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
                     Se connecter
                 </button>
             </form>
@@ -273,7 +279,7 @@
     </div>
 
     <!-- COOKIE CONSENT BANNER (Bottom Right) -->
-    <div id="cookie-banner" class="fixed bottom-6 right-6 z-50 max-w-sm bg-white text-black p-6 rounded-3xl shadow-2xl border border-gray-200 hidden animate-in slide-in-from-bottom duration-300">
+    <div id="cookie-banner" class="fixed bottom-6 right-6 z-50 max-w-sm bg-white text-black p-6 rounded-3xl shadow-2xl border border-gray-200 hidden animate-modal">
         <div class="flex items-start space-x-3 mb-4">
             <span class="text-2xl">🍪</span>
             <div>
@@ -284,10 +290,10 @@
             </div>
         </div>
         <div class="flex space-x-2">
-            <button onclick="handleCookies('reject')" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold py-2.5 rounded-full transition-colors cursor-pointer">
+            <button onclick="handleCookies('reject')" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold py-2.5 rounded-full transition-all hover:scale-105 cursor-pointer">
                 Refuser
             </button>
-            <button onclick="handleCookies('accept')" class="flex-1 bg-black hover:bg-gray-800 text-white text-xs font-bold py-2.5 rounded-full transition-colors cursor-pointer">
+            <button onclick="handleCookies('accept')" class="flex-1 bg-black hover:bg-gray-800 text-white text-xs font-bold py-2.5 rounded-full transition-all hover:scale-105 cursor-pointer">
                 Accepter
             </button>
         </div>
@@ -337,7 +343,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT FOR INTERNATIONAL SPORTS NEWS SLIDER & COOKIES -->
+    <!-- SCRIPT FOR INTERNATIONAL SPORTS NEWS SLIDER & ANIMATIONS -->
     <script>
         let sportsNews = [
             {
@@ -438,7 +444,7 @@
         let currentSlideIndex = 0;
         let isPaused = false;
         let slideInterval;
-        let authMode = 'login'; // 'login' ou 'register'
+        let authMode = 'login';
 
         function openAuthModal() {
             document.getElementById('auth-modal').classList.remove('hidden');
@@ -463,17 +469,17 @@
             
             container.innerHTML = `
                 <div class="mb-4">
-                    <span class="bg-gray-100 text-gray-800 text-xs font-bold uppercase px-3 py-1 rounded-full">${item.badge || item.category}</span>
+                    <span class="bg-gray-100 text-gray-800 text-xs font-bold uppercase px-3.5 py-1.5 rounded-full">${item.badge || item.category}</span>
                 </div>
                 <h2 class="font-anton text-3xl md:text-4xl uppercase tracking-tight mb-4">${item.title}</h2>
                 <div class="flex items-center space-x-3 mb-6 text-sm text-gray-500 border-b border-gray-100 pb-4">
-                    <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-xs">BCB</div>
+                    <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-xs shadow-sm">BCB</div>
                     <div>
                         <p class="font-bold text-black">Publié par <span class="text-blue-600">${item.media || 'Rédaction Internationale BCB'}</span></p>
                         <p class="text-xs">Actualité vérifiée en direct</p>
                     </div>
                 </div>
-                <div class="rounded-2xl overflow-hidden mb-6 aspect-[16/9]">
+                <div class="rounded-2xl overflow-hidden mb-6 aspect-[16/9] shadow-md">
                     <img src="${item.image}" class="w-full h-full object-cover" alt="Article image">
                 </div>
                 <p class="text-gray-800 text-base md:text-lg leading-relaxed font-medium mb-6">
@@ -490,19 +496,19 @@
         function initTrending() {
             const container = document.getElementById('trending-container');
             container.innerHTML = trendingNews.map((item, idx) => `
-                <div onclick='openArticle(trendingNews[${idx}])' class="group cursor-pointer bg-white p-4 rounded-3xl hover:shadow-md transition-all border border-gray-100 flex flex-col justify-between">
+                <div onclick='openArticle(trendingNews[${idx}])' class="group cursor-pointer bg-white p-5 rounded-3xl hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between hover:-translate-y-1.5">
                     <div>
-                        <div class="bg-[#f5f5f5] rounded-2xl overflow-hidden aspect-[4/3] mb-4 relative">
-                            <img src="${item.image}" alt="Actu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-xs font-bold uppercase shadow-sm">${item.badge}</span>
+                        <div class="bg-[#f5f5f5] rounded-2xl overflow-hidden aspect-[4/3] mb-4 relative shadow-inner">
+                            <img src="${item.image}" alt="Actu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase shadow-sm">${item.badge}</span>
                         </div>
                         <span class="text-xs font-bold uppercase text-gray-500 tracking-wider">${item.category}</span>
-                        <h3 class="font-bold text-base mt-1 group-hover:underline line-clamp-2">${item.title}</h3>
-                        <p class="text-gray-500 text-sm mt-1 line-clamp-2">${item.description}</p>
+                        <h3 class="font-bold text-base mt-1.5 group-hover:underline line-clamp-2">${item.title}</h3>
+                        <p class="text-gray-500 text-sm mt-1.5 line-clamp-2">${item.description}</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400 font-semibold">
+                    <div class="mt-5 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400 font-semibold">
                         <span>Source : ${item.media}</span>
-                        <span class="text-black group-hover:translate-x-1 transition-transform">Lire l'article <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                        <span class="text-black group-hover:translate-x-1.5 transition-transform duration-300 font-bold">Lire <i class="fa-solid fa-arrow-right ml-1"></i></span>
                     </div>
                 </div>
             `).join('');
@@ -528,8 +534,8 @@
             modal.classList.remove('hidden');
 
             const allItems = [
-                ...sportsNews.map((item, idx) => ({ ...item, cat: item.badge, sourceObj: item })),
-                ...trendingNews.map((item, idx) => ({ ...item, cat: item.category, sourceObj: item }))
+                ...sportsNews.map((item) => ({ ...item, cat: item.badge, sourceObj: item })),
+                ...trendingNews.map((item) => ({ ...item, cat: item.category, sourceObj: item }))
             ];
 
             const filtered = allItems.filter(item => 
@@ -541,9 +547,9 @@
             if (filtered.length === 0) {
                 container.innerHTML = `<p class="col-span-2 text-center text-gray-500 py-8 font-medium">Aucun résultat trouvé pour "${query}". Essayez un autre mot-clé...</p>`;
             } else {
-                container.innerHTML = filtered.map((item, idx) => `
-                    <div onclick='closeSearchModal(); openArticle(${JSON.stringify(item.sourceObj)});' class="flex space-x-4 bg-gray-50 p-4 rounded-2xl cursor-pointer hover:bg-gray-100 transition-colors">
-                        <img src="${item.image}" class="w-24 h-24 object-cover rounded-xl shrink-0" alt="News">
+                container.innerHTML = filtered.map((item) => `
+                    <div onclick='closeSearchModal(); openArticle(${JSON.stringify(item.sourceObj)});' class="flex space-x-4 bg-gray-50 p-4 rounded-2xl cursor-pointer hover:bg-gray-100 transition-all duration-300 hover:scale-[1.01]">
+                        <img src="${item.image}" class="w-24 h-24 object-cover rounded-xl shrink-0 shadow-sm" alt="News">
                         <div>
                             <span class="text-[10px] font-bold uppercase text-gray-500 tracking-wider">${item.cat} • ${item.media}</span>
                             <h4 class="font-bold text-sm mt-0.5 line-clamp-1">${item.title}</h4>
@@ -599,7 +605,7 @@
             dotsContainer.innerHTML = '';
             sportsNews.forEach((_, idx) => {
                 const dot = document.createElement('span');
-                dot.className = `w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === currentSlideIndex ? 'bg-white w-6' : 'bg-white/50'}`;
+                dot.className = `w-2 h-2 rounded-full transition-all duration-500 cursor-pointer ${idx === currentSlideIndex ? 'bg-white w-6' : 'bg-white/50'}`;
                 dot.onclick = () => goToSlide(idx);
                 dotsContainer.appendChild(dot);
             });
@@ -608,16 +614,25 @@
         }
 
         function updateSlideContent() {
-            const news = sportsNews[currentSlideIndex];
-            document.getElementById('hero-badge').textContent = news.badge;
-            document.getElementById('hero-title').innerHTML = news.title.replace(' : ', '<br>');
-            document.getElementById('hero-desc').textContent = news.description;
-            document.getElementById('hero-bg-img').src = news.image;
+            const contentBox = document.getElementById('hero-content-box');
+            contentBox.style.opacity = '0';
+            contentBox.style.transform = 'translateY(15px)';
 
-            const dots = document.getElementById('slider-dots').children;
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].className = `w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${i === currentSlideIndex ? 'bg-white w-6' : 'bg-white/50'}`;
-            }
+            setTimeout(() => {
+                const news = sportsNews[currentSlideIndex];
+                document.getElementById('hero-badge').textContent = news.badge;
+                document.getElementById('hero-title').innerHTML = news.title.replace(' : ', '<br>');
+                document.getElementById('hero-desc').textContent = news.description;
+                document.getElementById('hero-bg-img').src = news.image;
+
+                const dots = document.getElementById('slider-dots').children;
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].className = `w-2 h-2 rounded-full transition-all duration-500 cursor-pointer ${i === currentSlideIndex ? 'bg-white w-6' : 'bg-white/50'}`;
+                }
+
+                contentBox.style.opacity = '1';
+                contentBox.style.transform = 'translateY(0)';
+            }, 250);
         }
 
         function nextSlide() {
@@ -653,7 +668,7 @@
                 if (!isPaused) {
                     nextSlide();
                 }
-            }, 5000);
+            }, 6000);
         }
 
         window.onload = function() {
