@@ -18,34 +18,35 @@
         .slide-fade { transition: opacity 0.7s ease-in-out, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
     </style>
 </head>
-<body class="bg-white text-black antialiased selection:bg-black selection:text-white">
+<body class="bg-white text-black antialiased selection:bg-black selection:text-white overflow-x-hidden">
 
     <!-- TOP MINI BAR -->
-    <div class="bg-[#f5f5f5] text-[11px] px-6 py-2 flex justify-between items-center border-b border-gray-200">
-        <div class="flex items-center space-x-4">
-            <a href="#" class="hover:opacity-75 font-bold tracking-tight text-xs uppercase transition-opacity">BCB Club</a>
+    <div class="bg-[#f5f5f5] text-[10px] sm:text-[11px] px-3 sm:px-6 py-2 flex justify-between items-center border-b border-gray-200 overflow-x-auto whitespace-nowrap">
+        <div class="flex items-center space-x-3 shrink-0">
+            <a href="#" class="hover:opacity-75 font-bold tracking-tight uppercase transition-opacity">BCB Club</a>
             <span class="text-gray-300">|</span>
-            <a href="#" class="hover:opacity-75 font-bold tracking-tight text-xs uppercase transition-opacity">BCB Cook</a>
+            <a href="#" class="hover:opacity-75 font-bold tracking-tight uppercase transition-opacity">BCB Cook</a>
         </div>
-        <div class="flex items-center space-x-5 font-medium text-gray-700">
-            <a href="#" class="hover:text-black transition-colors">A propos de BCB Inc.</a>
-            <span>|</span>
-            <a href="#" class="hover:text-black transition-colors">Aide</a>
-            <span>|</span>
-            <a href="#" class="hover:text-black transition-colors">Rejoins le Club de la BCB !</a>
-            <span>|</span>
+        <div class="flex items-center space-x-3 sm:space-x-5 font-medium text-gray-700 shrink-0">
+            <span class="hidden md:inline">A propos de BCB Inc.</span>
+            <span class="hidden md:inline text-gray-300">|</span>
+            <span class="hidden sm:inline">Aide</span>
+            <span class="hidden sm:inline text-gray-300">|</span>
+            <a href="#" class="hover:text-black transition-colors hidden lg:inline">Rejoins le Club de la BCB !</a>
+            <span class="hidden lg:inline text-gray-300">|</span>
             <button onclick="openAuthModal()" class="hover:text-black transition-colors font-semibold cursor-pointer">S'identifier</button>
         </div>
     </div>
 
     <!-- MAIN NAVBAR -->
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
-        <div class="max-w-[1920px] mx-auto px-8 h-16 flex items-center justify-between">
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-[1920px] mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
             <!-- User Login Icon Logo Replacement -->
-            <div class="flex items-center space-x-3">
-                <button onclick="openAuthModal()" class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-900 text-xl transition-all duration-300 hover:scale-105 cursor-pointer" title="Connexion / Compte">
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <button onclick="openAuthModal()" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-900 text-lg sm:text-xl transition-all duration-300 hover:scale-105 cursor-pointer shrink-0" title="Connexion / Compte">
                     <i class="fa-regular fa-user"></i>
                 </button>
+                <span class="font-anton text-lg tracking-tight sm:hidden">BCB</span>
             </div>
 
             <!-- International News Sport Categories Navbar -->
@@ -59,14 +60,14 @@
             </div>
 
             <!-- Search and Icons -->
-            <div class="flex items-center space-x-4">
-                <div class="relative hidden sm:block">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-gray-500">
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
                         <i class="fa-solid fa-magnifying-glass text-xs"></i>
                     </span>
-                    <input type="text" id="search-input" placeholder="Rechercher une actu..." oninput="handleSearchInput(event)" class="bg-[#f5f5f5] text-sm rounded-full pl-10 pr-4 py-2 w-44 lg:w-56 focus:outline-none focus:bg-white focus:ring-1 focus:ring-gray-400 transition-all duration-300">
+                    <input type="text" id="search-input" placeholder="Rechercher..." oninput="handleSearchInput(event)" class="bg-[#f5f5f5] text-xs sm:text-sm rounded-full pl-9 pr-3 py-2 w-32 sm:w-44 lg:w-56 focus:outline-none focus:bg-white focus:ring-1 focus:ring-gray-400 transition-all duration-300">
                 </div>
-                <button class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-900 text-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+                <button class="w-9 h-9 sm:w-10 sm:h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-900 text-base sm:text-lg transition-all duration-300 hover:scale-105 cursor-pointer shrink-0">
                     <i class="fa-regular fa-heart"></i>
                 </button>
             </div>
@@ -75,62 +76,62 @@
 
     <!-- SEARCH RESULTS MODAL / OVERLAY -->
     <div id="search-modal" class="fixed inset-x-0 top-16 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xl hidden transition-all duration-300 max-h-[80vh] overflow-y-auto">
-        <div class="max-w-5xl mx-auto px-8 py-6">
+        <div class="max-w-5xl mx-auto px-4 sm:px-8 py-6">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="font-anton text-2xl tracking-tight">RÉSULTATS DE RECHERCHE</h3>
+                <h3 class="font-anton text-xl sm:text-2xl tracking-tight">RÉSULTATS DE RECHERCHE</h3>
                 <button onclick="closeSearchModal()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 transition-transform hover:scale-105 cursor-pointer">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <div id="search-results-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div id="search-results-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <!-- Dynamically populated search results -->
             </div>
         </div>
     </div>
 
     <!-- HERO BANNER DYNAMIC INTERNATIONAL SPORTS NEWS SLIDER -->
-    <header class="max-w-[1920px] mx-auto px-4 md:px-8 py-6">
-        <div id="hero-slider-container" class="relative rounded-3xl overflow-hidden shadow-lg bg-neutral-900 group min-h-[580px] md:min-h-[700px] flex flex-col justify-end p-8 md:p-16 transition-all duration-700">
+    <header class="max-w-[1920px] mx-auto px-3 sm:px-4 md:px-8 py-4 sm:py-6">
+        <div id="hero-slider-container" class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg bg-neutral-900 group min-h-[480px] sm:min-h-[580px] md:min-h-[700px] flex flex-col justify-end p-5 sm:p-8 md:p-16 transition-all duration-700">
             
             <!-- Background Image with dark overlay gradient & smooth scaling -->
             <div class="absolute inset-0 z-0 overflow-hidden">
                 <img id="hero-bg-img" src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1800&auto=format&fit=crop" 
                      alt="Actu Sport International" 
                      class="w-full h-full object-cover object-center opacity-85 scale-100 group-hover:scale-105 transition-transform duration-1000">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
             </div>
 
             <!-- Content Overlay with entry animation -->
-            <div id="hero-content-box" class="relative z-10 max-w-2xl text-white slide-fade">
-                <span id="hero-badge" class="inline-block bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase px-3.5 py-1.5 rounded-full mb-4 tracking-wider shadow-sm">Flash Actu International</span>
-                <h1 id="hero-title" class="font-anton text-4xl sm:text-5xl md:text-7xl uppercase tracking-tight leading-[0.9] mb-6 drop-shadow-md">
-                    TOUT SE JOUE DANS <br>LA TÊTE
+            <div id="hero-content-box" class="relative z-10 max-w-2xl text-white slide-fade pb-12 sm:pb-0">
+                <span id="hero-badge" class="inline-block bg-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full mb-3 sm:mb-4 tracking-wider shadow-sm">Flash Actu International</span>
+                <h1 id="hero-title" class="font-anton text-2xl sm:text-4xl md:text-6xl uppercase tracking-tight leading-[1.05] sm:leading-[0.9] mb-3 sm:mb-6 drop-shadow-md">
+                    TOUT SE JOUE DANS <br class="hidden sm:inline">LA TÊTE
                 </h1>
-                <p id="hero-desc" class="text-sm md:text-base text-gray-200 font-medium mb-8 max-w-lg leading-relaxed">
+                <p id="hero-desc" class="text-xs sm:text-sm md:text-base text-gray-200 font-medium mb-5 sm:mb-8 max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none">
                     Reste focus avant chaque compétition avec les dernières actualités sportives internationales en direct.
                 </p>
                 <div>
-                    <button id="hero-btn" onclick='openArticle(sportsNews[currentSlideIndex])' class="bg-white hover:bg-gray-200 text-black font-bold px-8 py-3.5 rounded-full text-sm uppercase tracking-wide transition-all duration-300 shadow-xl hover:scale-105 cursor-pointer">
+                    <button id="hero-btn" onclick='openArticle(sportsNews[currentSlideIndex])' class="bg-white hover:bg-gray-200 text-black font-bold px-6 py-3 sm:px-8 sm:py-3.5 rounded-full text-xs sm:text-sm uppercase tracking-wide transition-all duration-300 shadow-xl hover:scale-105 cursor-pointer">
                         Découvrir
                     </button>
                 </div>
             </div>
 
             <!-- Carousel Controls at bottom right -->
-            <div class="absolute bottom-6 right-6 z-20 flex items-center space-x-2 bg-black/40 backdrop-blur-md p-1.5 rounded-full border border-white/10 shadow-lg">
-                <button id="slider-pause-btn" onclick="togglePauseSlider()" class="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" title="Pause / Lecture">
-                    <i id="pause-icon" class="fa-solid fa-pause text-xs"></i>
+            <div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20 flex items-center space-x-1.5 sm:space-x-2 bg-black/40 backdrop-blur-md p-1 sm:p-1.5 rounded-full border border-white/10 shadow-lg">
+                <button id="slider-pause-btn" onclick="togglePauseSlider()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" title="Pause / Lecture">
+                    <i id="pause-icon" class="fa-solid fa-pause text-[10px] sm:text-xs"></i>
                 </button>
-                <button onclick="prevSlide()" class="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" title="Actualité précédente">
-                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                <button onclick="prevSlide()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" title="Actualité précédente">
+                    <i class="fa-solid fa-chevron-left text-[10px] sm:text-xs"></i>
                 </button>
-                <button onclick="nextSlide()" class="w-9 h-9 rounded-full bg-white hover:bg-gray-200 text-black flex items-center justify-center transition-all duration-300 shadow-md hover:scale-105 cursor-pointer" title="Actualité suivante">
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                <button onclick="nextSlide()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white hover:bg-gray-200 text-black flex items-center justify-center transition-all duration-300 shadow-md hover:scale-105 cursor-pointer" title="Actualité suivante">
+                    <i class="fa-solid fa-chevron-right text-[10px] sm:text-xs"></i>
                 </button>
             </div>
 
             <!-- Carousel Pagination dots -->
-            <div id="slider-dots" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
+            <div id="slider-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 sm:bottom-6 z-20 flex space-x-1.5 sm:space-x-2">
                 <!-- Dynamically generated dots -->
             </div>
 
@@ -138,24 +139,24 @@
     </header>
 
     <!-- TRENDING SECTION (Secondary International News) -->
-    <section class="max-w-[1920px] mx-auto px-4 md:px-8 py-16">
-        <div class="flex justify-between items-center mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Tendances (Actualités secondaires)</h2>
+    <section class="max-w-[1920px] mx-auto px-4 sm:px-8 py-10 sm:py-16">
+        <div class="flex justify-between items-center mb-6 sm:mb-8">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">Tendances</h2>
             <div class="flex space-x-2">
-                <button class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-black transition-all hover:scale-105 cursor-pointer"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="w-10 h-10 rounded-full bg-gray-900 hover:bg-black text-white flex items-center justify-center transition-all hover:scale-105 cursor-pointer"><i class="fa-solid fa-chevron-right"></i></button>
+                <button class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-black transition-all hover:scale-105 cursor-pointer"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                <button class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gray-900 hover:bg-black text-white flex items-center justify-center transition-all hover:scale-105 cursor-pointer"><i class="fa-solid fa-chevron-right text-xs"></i></button>
             </div>
         </div>
 
-        <div id="trending-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="trending-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             <!-- Dynamically populated trending news -->
         </div>
     </section>
 
     <!-- ARTICLE READER MODAL -->
-    <div id="article-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto transition-opacity duration-300">
-        <div class="bg-white text-black rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl p-8 animate-modal">
-            <button onclick="closeArticleModal()" class="absolute top-6 right-6 text-gray-500 hover:text-black text-xl w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-all duration-300 hover:scale-105 z-10 cursor-pointer">
+    <div id="article-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto transition-opacity duration-300">
+        <div class="bg-white text-black rounded-2xl sm:rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl p-5 sm:p-8 animate-modal">
+            <button onclick="closeArticleModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-gray-500 hover:text-black text-xl w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-all duration-300 hover:scale-105 z-10 cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="article-modal-content">
@@ -165,84 +166,84 @@
     </div>
 
     <!-- FUN SPORT CATEGORIES SECTION -->
-    <section class="max-w-[1920px] mx-auto px-4 md:px-8 py-16 bg-[#f9f9f9] rounded-3xl my-12 shadow-sm">
-        <div class="text-center mb-10">
-            <span class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 block">Explorer par univers</span>
-            <h2 class="font-anton text-3xl md:text-4xl uppercase tracking-tight">Catégories & Disciplines Sportives</h2>
+    <section class="max-w-[1920px] mx-auto px-3 sm:px-4 md:px-8 py-10 sm:py-16 bg-[#f9f9f9] rounded-2xl sm:rounded-3xl my-8 sm:my-12 shadow-sm">
+        <div class="text-center mb-8 sm:mb-10">
+            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 block">Explorer par univers</span>
+            <h2 class="font-anton text-2xl sm:text-3xl md:text-4xl uppercase tracking-tight">Catégories & Disciplines Sportives</h2>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div onclick="filterByCategory('Football')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">⚽</span>
-                <h4 class="font-bold text-sm">Football</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Le roi des stades</span>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
+            <div onclick="filterByCategory('Football')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">⚽</span>
+                <h4 class="font-bold text-xs sm:text-sm">Football</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Le roi des stades</span>
             </div>
-            <div onclick="filterByCategory('Basketball')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏀</span>
-                <h4 class="font-bold text-sm">Basketball</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Dunks & Parquets</span>
+            <div onclick="filterByCategory('Basketball')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏀</span>
+                <h4 class="font-bold text-xs sm:text-sm">Basketball</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Dunks & Parquets</span>
             </div>
-            <div onclick="filterByCategory('Tennis')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🎾</span>
-                <h4 class="font-bold text-sm">Tennis</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Aces & Match points</span>
+            <div onclick="filterByCategory('Tennis')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🎾</span>
+                <h4 class="font-bold text-xs sm:text-sm">Tennis</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Aces & Match points</span>
             </div>
-            <div onclick="filterByCategory('Running')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏃‍♂️</span>
-                <h4 class="font-bold text-sm">Running</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Chrono & Endurance</span>
+            <div onclick="filterByCategory('Running')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏃‍♂️</span>
+                <h4 class="font-bold text-xs sm:text-sm">Running</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Chrono & Endurance</span>
             </div>
-            <div onclick="filterByCategory('Formule 1')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏎️</span>
-                <h4 class="font-bold text-sm">Formule 1</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Vitesse & Piste</span>
+            <div onclick="filterByCategory('Formule 1')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏎️</span>
+                <h4 class="font-bold text-xs sm:text-sm">Formule 1</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Vitesse & Piste</span>
             </div>
-            <div onclick="filterByCategory('Cyclisme')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🚴‍♂️</span>
-                <h4 class="font-bold text-sm">Cyclisme</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Cols & Échappées</span>
+            <div onclick="filterByCategory('Cyclisme')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🚴‍♂️</span>
+                <h4 class="font-bold text-xs sm:text-sm">Cyclisme</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Cols & Échappées</span>
             </div>
-            <div onclick="filterByCategory('Rugby')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏉</span>
-                <h4 class="font-bold text-sm">Rugby</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Combats & Essais</span>
+            <div onclick="filterByCategory('Rugby')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏉</span>
+                <h4 class="font-bold text-xs sm:text-sm">Rugby</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Combats & Essais</span>
             </div>
-            <div onclick="filterByCategory('Natation')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏊‍♂️</span>
-                <h4 class="font-bold text-sm">Natation</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Bassins & Records</span>
+            <div onclick="filterByCategory('Natation')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏊‍♂️</span>
+                <h4 class="font-bold text-xs sm:text-sm">Natation</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Bassins & Records</span>
             </div>
-            <div onclick="filterByCategory('Boxe')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🥊</span>
-                <h4 class="font-bold text-sm">Boxe & MMA</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Combats épiques</span>
+            <div onclick="filterByCategory('Boxe')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🥊</span>
+                <h4 class="font-bold text-xs sm:text-sm">Boxe & MMA</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Combats épiques</span>
             </div>
-            <div onclick="filterByCategory('Skate')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🛹</span>
-                <h4 class="font-bold text-sm">Skate & Surf</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Glisse & Tricks</span>
+            <div onclick="filterByCategory('Skate')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🛹</span>
+                <h4 class="font-bold text-xs sm:text-sm">Skate & Surf</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Glisse & Tricks</span>
             </div>
-            <div onclick="filterByCategory('Fitness')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🏋️‍♂️</span>
-                <h4 class="font-bold text-sm">Fitness</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Force & Training</span>
+            <div onclick="filterByCategory('Fitness')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏋️‍♂️</span>
+                <h4 class="font-bold text-xs sm:text-sm">Fitness</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Force & Training</span>
             </div>
-            <div onclick="filterByCategory('Esport')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">🎮</span>
-                <h4 class="font-bold text-sm">Esport</h4>
-                <span class="text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Compétition geek</span>
+            <div onclick="filterByCategory('Esport')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🎮</span>
+                <h4 class="font-bold text-xs sm:text-sm">Esport</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Compétition geek</span>
             </div>
         </div>
     </section>
 
     <!-- AUTHENTICATION MODAL (Connection & Registration) -->
     <div id="auth-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white text-black rounded-3xl p-8 max-w-md w-full relative shadow-2xl animate-modal">
-            <button onclick="closeAuthModal()" class="absolute top-6 right-6 text-gray-400 hover:text-black text-xl w-8 h-8 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-all hover:scale-105 cursor-pointer">
+        <div class="bg-white text-black rounded-3xl p-6 sm:p-8 max-w-md w-full relative shadow-2xl animate-modal">
+            <button onclick="closeAuthModal()" class="absolute top-5 right-5 sm:top-6 sm:right-6 text-gray-400 hover:text-black text-xl w-8 h-8 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-all hover:scale-105 cursor-pointer">
                 <i class="fa-solid fa-xmark text-sm"></i>
             </button>
             
             <div class="text-center mb-6">
-                <h3 class="font-anton text-3xl tracking-wide mb-1">ESPACE BCB</h3>
+                <h3 class="font-anton text-2xl sm:text-3xl tracking-wide mb-1">ESPACE BCB</h3>
                 <p id="auth-subtitle" class="text-xs text-gray-500 font-medium">Connectez-vous ou créez votre compte pour accéder au club.</p>
             </div>
 
@@ -279,9 +280,9 @@
     </div>
 
     <!-- COOKIE CONSENT BANNER (Bottom Right) -->
-    <div id="cookie-banner" class="fixed bottom-6 right-6 z-50 max-w-sm bg-white text-black p-6 rounded-3xl shadow-2xl border border-gray-200 hidden animate-modal">
+    <div id="cookie-banner" class="fixed bottom-4 right-4 left-4 sm:left-auto sm:max-w-sm bg-white text-black p-5 sm:p-6 rounded-3xl shadow-2xl border border-gray-200 hidden animate-modal z-50">
         <div class="flex items-start space-x-3 mb-4">
-            <span class="text-2xl">🍪</span>
+            <span class="text-2xl shrink-0">🍪</span>
             <div>
                 <h4 class="font-bold text-sm tracking-tight mb-1">Gestion des cookies & confidentialité</h4>
                 <p class="text-xs text-gray-600 leading-relaxed">
@@ -300,18 +301,18 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="bg-[#111111] text-white pt-16 pb-12 mt-20">
-        <div class="max-w-[1920px] mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-sm">
+    <footer class="bg-[#111111] text-white pt-12 sm:pt-16 pb-10 sm:pb-12 mt-16 sm:mt-20">
+        <div class="max-w-[1920px] mx-auto px-4 sm:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-sm">
             <div>
                 <h4 class="font-bold uppercase tracking-wider mb-4 text-xs text-gray-400">CLUB</h4>
-                <ul class="space-y-3 text-gray-300 font-medium">
+                <ul class="space-y-3 text-gray-300 font-medium text-xs sm:text-sm">
                     <li><a href="#" class="hover:text-white transition-colors">Avantages</a></li>
                     <li><a href="#" class="hover:text-white transition-colors">Nos dernières infos</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-bold uppercase tracking-wider mb-4 text-xs text-gray-400">AIDE</h4>
-                <ul class="space-y-3 text-gray-300 font-medium">
+                <ul class="space-y-3 text-gray-300 font-medium text-xs sm:text-sm">
                     <li><a href="#" class="hover:text-white transition-colors">Problème avec le site ?</a></li>
                     <li><a href="#" class="hover:text-white transition-colors">Aucune actualités n'apparait ?</a></li>
                     <li><a href="#" class="hover:text-white transition-colors">Les news ne se renouvellent pas ?</a></li>
@@ -319,7 +320,7 @@
             </div>
             <div>
                 <h4 class="font-bold uppercase tracking-wider mb-4 text-xs text-gray-400">À PROPOS DE BCB</h4>
-                <ul class="space-y-3 text-gray-300 font-medium">
+                <ul class="space-y-3 text-gray-300 font-medium text-xs sm:text-sm">
                     <li><a href="#" class="hover:text-white transition-colors">Actualités</a></li>
                     <li><a href="#" class="hover:text-white transition-colors">Newsroom</a></li>
                     <li><a href="#" class="hover:text-white transition-colors">Commentaires</a></li>
@@ -328,14 +329,14 @@
             </div>
             <div>
                 <h4 class="font-bold uppercase tracking-wider mb-4 text-xs text-gray-400">RÉSEAUX SOCIAUX</h4>
-                <p class="text-gray-300 text-sm leading-relaxed">
+                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
                     Aucun réseau ne diffuse BCB actuellement. Merci de votre compréhension.
                 </p>
             </div>
         </div>
-        <div class="max-w-[1920px] mx-auto px-8 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <div class="max-w-[1920px] mx-auto px-4 sm:px-8 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-4 md:space-y-0 text-center md:text-left">
             <p>© 2026 BCB Inc. Tous droits réservés.</p>
-            <div class="flex space-x-6 mt-4 md:mt-0">
+            <div class="flex flex-wrap justify-center space-x-6">
                 <a href="#" class="hover:text-white transition-colors">Guides</a>
                 <a href="#" class="hover:text-white transition-colors">Conditions d'utilisation</a>
                 <a href="#" class="hover:text-white transition-colors">Politique de confidentialité</a>
@@ -469,23 +470,23 @@
             
             container.innerHTML = `
                 <div class="mb-4">
-                    <span class="bg-gray-100 text-gray-800 text-xs font-bold uppercase px-3.5 py-1.5 rounded-full">${item.badge || item.category}</span>
+                    <span class="bg-gray-100 text-gray-800 text-[10px] sm:text-xs font-bold uppercase px-3 py-1.5 rounded-full">${item.badge || item.category}</span>
                 </div>
-                <h2 class="font-anton text-3xl md:text-4xl uppercase tracking-tight mb-4">${item.title}</h2>
-                <div class="flex items-center space-x-3 mb-6 text-sm text-gray-500 border-b border-gray-100 pb-4">
-                    <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-xs shadow-sm">BCB</div>
+                <h2 class="font-anton text-2xl sm:text-3xl md:text-4xl uppercase tracking-tight mb-4">${item.title}</h2>
+                <div class="flex items-center space-x-3 mb-6 text-xs sm:text-sm text-gray-500 border-b border-gray-100 pb-4">
+                    <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-xs shadow-sm shrink-0">BCB</div>
                     <div>
                         <p class="font-bold text-black">Publié par <span class="text-blue-600">${item.media || 'Rédaction Internationale BCB'}</span></p>
-                        <p class="text-xs">Actualité vérifiée en direct</p>
+                        <p class="text-[10px] sm:text-xs">Actualité vérifiée en direct</p>
                     </div>
                 </div>
                 <div class="rounded-2xl overflow-hidden mb-6 aspect-[16/9] shadow-md">
                     <img src="${item.image}" class="w-full h-full object-cover" alt="Article image">
                 </div>
-                <p class="text-gray-800 text-base md:text-lg leading-relaxed font-medium mb-6">
+                <p class="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed font-medium mb-6">
                     ${item.description}
                 </p>
-                <div class="text-gray-700 text-sm md:text-base leading-relaxed space-y-4 border-t border-gray-100 pt-6">
+                <div class="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed space-y-4 border-t border-gray-100 pt-6">
                     <p>${item.fullText || "Les analyses approfondies démontrent que cet événement marque un tournant majeur dans la saison sportive en cours. Les experts continuent de suivre de près l'évolution des performances et des classements officiels."}</p>
                     <p>Restez connectés sur l'écosystème BCB pour ne rien rater des prochaines échéances et des interviews exclusives de nos athlètes ambassadeurs.</p>
                 </div>
@@ -496,19 +497,19 @@
         function initTrending() {
             const container = document.getElementById('trending-container');
             container.innerHTML = trendingNews.map((item, idx) => `
-                <div onclick='openArticle(trendingNews[${idx}])' class="group cursor-pointer bg-white p-5 rounded-3xl hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between hover:-translate-y-1.5">
+                <div onclick='openArticle(trendingNews[${idx}])' class="group cursor-pointer bg-white p-4 sm:p-5 rounded-3xl hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between hover:-translate-y-1.5">
                     <div>
                         <div class="bg-[#f5f5f5] rounded-2xl overflow-hidden aspect-[4/3] mb-4 relative shadow-inner">
                             <img src="${item.image}" alt="Actu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
-                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase shadow-sm">${item.badge}</span>
+                            <span class="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/90 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase shadow-sm">${item.badge}</span>
                         </div>
-                        <span class="text-xs font-bold uppercase text-gray-500 tracking-wider">${item.category}</span>
-                        <h3 class="font-bold text-base mt-1.5 group-hover:underline line-clamp-2">${item.title}</h3>
-                        <p class="text-gray-500 text-sm mt-1.5 line-clamp-2">${item.description}</p>
+                        <span class="text-[10px] sm:text-xs font-bold uppercase text-gray-500 tracking-wider">${item.category}</span>
+                        <h3 class="font-bold text-sm sm:text-base mt-1.5 group-hover:underline line-clamp-2">${item.title}</h3>
+                        <p class="text-gray-500 text-xs sm:text-sm mt-1.5 line-clamp-2">${item.description}</p>
                     </div>
-                    <div class="mt-5 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400 font-semibold">
-                        <span>Source : ${item.media}</span>
-                        <span class="text-black group-hover:translate-x-1.5 transition-transform duration-300 font-bold">Lire <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    <div class="mt-4 sm:mt-5 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] sm:text-xs text-gray-400 font-semibold">
+                        <span class="truncate mr-2">Source : ${item.media}</span>
+                        <span class="text-black group-hover:translate-x-1 transition-transform duration-300 font-bold shrink-0">Lire <i class="fa-solid fa-arrow-right ml-1"></i></span>
                     </div>
                 </div>
             `).join('');
@@ -545,15 +546,15 @@
             );
 
             if (filtered.length === 0) {
-                container.innerHTML = `<p class="col-span-2 text-center text-gray-500 py-8 font-medium">Aucun résultat trouvé pour "${query}". Essayez un autre mot-clé...</p>`;
+                container.innerHTML = `<p class="col-span-2 text-center text-gray-500 py-8 font-medium text-sm">Aucun résultat trouvé pour "${query}". Essayez un autre mot-clé...</p>`;
             } else {
                 container.innerHTML = filtered.map((item) => `
-                    <div onclick='closeSearchModal(); openArticle(${JSON.stringify(item.sourceObj)});' class="flex space-x-4 bg-gray-50 p-4 rounded-2xl cursor-pointer hover:bg-gray-100 transition-all duration-300 hover:scale-[1.01]">
-                        <img src="${item.image}" class="w-24 h-24 object-cover rounded-xl shrink-0 shadow-sm" alt="News">
-                        <div>
-                            <span class="text-[10px] font-bold uppercase text-gray-500 tracking-wider">${item.cat} • ${item.media}</span>
-                            <h4 class="font-bold text-sm mt-0.5 line-clamp-1">${item.title}</h4>
-                            <p class="text-xs text-gray-600 mt-1 line-clamp-2">${item.description}</p>
+                    <div onclick='closeSearchModal(); openArticle(${JSON.stringify(item.sourceObj)});' class="flex space-x-3 sm:space-x-4 bg-gray-50 p-3 sm:p-4 rounded-2xl cursor-pointer hover:bg-gray-100 transition-all duration-300">
+                        <img src="${item.image}" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl shrink-0 shadow-sm" alt="News">
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[9px] sm:text-[10px] font-bold uppercase text-gray-500 tracking-wider block truncate">${item.cat} • ${item.media}</span>
+                            <h4 class="font-bold text-xs sm:text-sm mt-0.5 line-clamp-1">${item.title}</h4>
+                            <p class="text-[11px] sm:text-xs text-gray-600 mt-1 line-clamp-2">${item.description}</p>
                         </div>
                     </div>
                 `).join('');
@@ -621,6 +622,7 @@
             setTimeout(() => {
                 const news = sportsNews[currentSlideIndex];
                 document.getElementById('hero-badge').textContent = news.badge;
+                document.getElementById('hero-titleinnerHTML', news.title);
                 document.getElementById('hero-title').innerHTML = news.title.replace(' : ', '<br>');
                 document.getElementById('hero-desc').textContent = news.description;
                 document.getElementById('hero-bg-img').src = news.image;
@@ -655,10 +657,10 @@
             const icon = document.getElementById('pause-icon');
             if (isPaused) {
                 clearInterval(slideInterval);
-                icon.className = "fa-solid fa-play text-xs";
+                icon.className = "fa-solid fa-play text-[10px] sm:text-xs";
             } else {
                 startInterval();
-                icon.className = "fa-solid fa-pause text-xs";
+                icon.className = "fa-solid fa-pause text-[10px] sm:text-xs";
             }
         }
 
