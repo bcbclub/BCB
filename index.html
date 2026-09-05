@@ -91,7 +91,7 @@
 
     <!-- HERO BANNER DYNAMIC INTERNATIONAL SPORTS NEWS SLIDER -->
     <header class="max-w-[1920px] mx-auto px-3 sm:px-4 md:px-8 py-4 sm:py-6">
-        <div id="hero-slider-container" class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg bg-neutral-900 group min-h-[480px] sm:min-h-[580px] md:min-h-[700px] flex flex-col justify-end p-5 sm:p-8 md:p-16 transition-all duration-700">
+        <div id="hero-slider-container" class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg bg-neutral-900 group min-h-[480px] sm:min-h-[580px] md:min-h-[700px] flex flex-col justify-end p-5 sm:p-8 md:p-16 transition-all duration-700 select-none">
             
             <!-- Background Image with dark overlay gradient & smooth scaling -->
             <div class="absolute inset-0 z-0 overflow-hidden">
@@ -122,11 +122,11 @@
                 <button id="slider-pause-btn" onclick="togglePauseSlider()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" title="Pause / Lecture">
                     <i id="pause-icon" class="fa-solid fa-pause text-[10px] sm:text-xs"></i>
                 </button>
-                <button onclick="prevSlide()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" title="Actualité précédente">
-                    <i class="fa-solid fa-chevron-left text-[10px] sm:text-xs"></i>
+                <button onclick="prevSlide()" class="hidden sm:flex w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" title="Actualité précédente">
+                    <i class="fa-solid fa-chevron-left text-xs"></i>
                 </button>
-                <button onclick="nextSlide()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white hover:bg-gray-200 text-black flex items-center justify-center transition-all duration-300 shadow-md hover:scale-105 cursor-pointer" title="Actualité suivante">
-                    <i class="fa-solid fa-chevron-right text-[10px] sm:text-xs"></i>
+                <button onclick="nextSlide()" class="hidden sm:flex w-9 h-9 rounded-full bg-white hover:bg-gray-200 text-black items-center justify-center transition-all duration-300 shadow-md hover:scale-105 cursor-pointer" title="Actualité suivante">
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
                 </button>
             </div>
 
@@ -612,6 +612,31 @@
             });
             updateSlideContent();
             startInterval();
+            initSwipeGestures();
+        }
+
+        function initSwipeGestures() {
+            const slider = document.getElementById('hero-slider-container');
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            slider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    nextSlide(); // Swipe gauche -> actu suivante
+                }
+                if (touchEndX > touchStartX + 50) {
+                    prevSlide(); // Swipe droite -> actu précédente
+                }
+            }
         }
 
         function updateSlideContent() {
@@ -622,7 +647,6 @@
             setTimeout(() => {
                 const news = sportsNews[currentSlideIndex];
                 document.getElementById('hero-badge').textContent = news.badge;
-                document.getElementById('hero-titleinnerHTML', news.title);
                 document.getElementById('hero-title').innerHTML = news.title.replace(' : ', '<br>');
                 document.getElementById('hero-desc').textContent = news.description;
                 document.getElementById('hero-bg-img').src = news.image;
