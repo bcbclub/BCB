@@ -52,6 +52,10 @@
                 width: 550px !important;
             }
         }
+
+        .bcb-auth-shell { animation: fadeInScale 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .bcb-auth-input { outline: none; transition: border-color .2s, background-color .2s, box-shadow .2s; }
+        .bcb-auth-input:focus { background: #fff; border-color: #111; box-shadow: 0 0 0 3px rgba(17,17,17,.07); }
     </style>
 </head>
 <body class="bg-white text-black antialiased selection:bg-black selection:text-white overflow-x-hidden">
@@ -71,7 +75,7 @@
             <a href="#" class="hover:text-black transition-colors hidden lg:inline">Rejoins le Club de la BCB !</a>
             <span class="hidden lg:inline text-gray-300">|</span>
             <div id="auth-top-action" class="inline-block">
-                <button onclick="openAuthModal()" class="hover:text-black transition-colors font-semibold cursor-pointer">S'identifier</button>
+                <button onclick="window.location.href='connexion.html'" class="hover:text-black transition-colors font-semibold cursor-pointer">S'identifier</button>
             </div>
         </div>
     </div>
@@ -298,52 +302,134 @@
         </div>
     </section>
 
-    <!-- AUTHENTICATION / REGISTRATION MODAL -->
-    <div id="auth-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white text-black rounded-3xl p-6 sm:p-8 max-w-md w-full relative shadow-2xl animate-modal">
-            <button onclick="closeAuthModal()" class="absolute top-5 right-5 sm:top-6 sm:right-6 text-gray-400 hover:text-black text-xl w-8 h-8 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-all hover:scale-105 cursor-pointer">
-                <i class="fa-solid fa-xmark text-sm"></i>
+    <!-- BCB AUTHENTICATION / REGISTRATION -->
+    <div id="auth-modal" class="fixed inset-0 z-[60] bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6">
+        <div class="bcb-auth-shell bg-white text-black rounded-[2rem] w-full max-w-5xl overflow-hidden shadow-2xl relative animate-modal">
+            <button onclick="closeAuthModal()" aria-label="Fermer" class="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 w-10 h-10 rounded-full bg-white/90 hover:bg-gray-100 flex items-center justify-center transition-all hover:scale-105">
+                <i class="fa-solid fa-xmark"></i>
             </button>
-            
-            <div class="text-center mb-6">
-                <h3 class="font-anton text-2xl sm:text-3xl tracking-wide mb-1">ESPACE BCB</h3>
-                <p id="auth-subtitle" class="text-xs text-gray-500 font-medium">Connectez-vous ou créez votre compte pour accéder au club.</p>
-            </div>
 
-            <!-- Switcher Login / Register -->
-            <div class="flex bg-gray-100 p-1 rounded-full mb-6 text-xs font-bold">
-                <button onclick="switchAuthTab('login')" id="tab-login" class="flex-1 py-2.5 rounded-full bg-black text-white transition-all shadow-sm cursor-pointer">Connexion</button>
-                <button onclick="switchAuthTab('register')" id="tab-register" class="flex-1 py-2.5 rounded-full text-gray-600 hover:text-black transition-all cursor-pointer">Créer un compte</button>
-            </div>
+            <div class="grid lg:grid-cols-[0.9fr_1.1fr] min-h-[560px]">
+                <!-- Brand panel -->
+                <div class="hidden lg:flex relative bg-black text-white p-10 flex-col justify-between overflow-hidden">
+                    <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full border border-white/10"></div>
+                    <div class="absolute -bottom-40 -left-20 w-96 h-96 rounded-full border border-white/10"></div>
 
-            <!-- Form -->
-            <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-4">
-                <div id="name-fields-group" class="grid grid-cols-2 gap-3 hidden">
-                    <div>
-                        <label class="block text-[10px] uppercase font-bold text-gray-600 mb-1">Prénom</label>
-                        <input type="text" id="user-firstname" placeholder="Prénom" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:border-black transition-colors">
+                    <div class="relative z-10">
+                        <div class="font-anton text-5xl tracking-tight">BCB.</div>
+                        <div class="mt-2 text-[10px] uppercase tracking-[0.3em] text-gray-400">Tout se joue dans la tête.</div>
                     </div>
-                    <div>
-                        <label class="block text-[10px] uppercase font-bold text-gray-600 mb-1">Nom</label>
-                        <input type="text" id="user-lastname" placeholder="Nom" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:border-black transition-colors">
+
+                    <div class="relative z-10">
+                        <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4">
+                            <span class="w-2 h-2 bg-white rounded-full"></span> BCB Club
+                        </span>
+                        <h2 class="font-anton text-5xl uppercase leading-none mb-5">Le sport.<br>Votre univers.</h2>
+                        <p class="text-sm text-gray-400 leading-relaxed max-w-sm">
+                            Retrouvez vos favoris, vos préférences et votre expérience BCB au même endroit.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 text-[10px] uppercase tracking-widest text-gray-500">
+                        BCB Inc. • Espace membre
                     </div>
                 </div>
-                <div>
-                    <label class="block text-xs uppercase font-bold text-gray-600 mb-1.5">Adresse email</label>
-                    <input type="email" id="user-email" required placeholder="nom@exemple.com" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors">
-                </div>
-                <div>
-                    <label class="block text-xs uppercase font-bold text-gray-600 mb-1.5">Mot de passe</label>
-                    <input type="password" id="user-password" required placeholder="••••••••" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors">
-                </div>
-                <button type="submit" id="auth-submit-btn" class="w-full bg-black hover:bg-gray-800 text-white font-bold py-3.5 rounded-full text-sm uppercase tracking-wide transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
-                    Se connecter
-                </button>
-            </form>
 
-            <div id="auth-success" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-2xl text-center space-y-1">
-                <p class="font-bold text-sm">✓ Bienvenue dans le Club !</p>
-                <p class="text-emerald-700">Connexion établie avec succès.</p>
+                <!-- Form panel -->
+                <div class="p-6 sm:p-10 lg:p-12 flex flex-col justify-center">
+                    <div class="max-w-md mx-auto w-full">
+                        <div class="mb-7">
+                            <div class="lg:hidden font-anton text-4xl mb-5">BCB.</div>
+                            <span id="auth-kicker" class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Espace membre</span>
+                            <h3 id="auth-title" class="font-anton text-3xl sm:text-4xl uppercase tracking-tight mt-1">Connexion</h3>
+                            <p id="auth-subtitle" class="text-xs sm:text-sm text-gray-500 mt-2 leading-relaxed">
+                                Connectez-vous pour retrouver vos favoris et préférences.
+                            </p>
+                        </div>
+
+                        <div class="flex bg-gray-100 p-1 rounded-2xl mb-6">
+                            <button onclick="switchAuthTab('login')" id="tab-login" class="flex-1 py-3 rounded-xl bg-black text-white text-xs font-bold transition-all shadow-sm">
+                                Se connecter
+                            </button>
+                            <button onclick="switchAuthTab('register')" id="tab-register" class="flex-1 py-3 rounded-xl text-gray-500 hover:text-black text-xs font-bold transition-all">
+                                Créer un compte
+                            </button>
+                        </div>
+
+                        <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+                            <div id="name-fields-group" class="grid grid-cols-2 gap-3 hidden">
+                                <div>
+                                    <label class="block text-[10px] uppercase font-bold text-gray-500 mb-1.5">Prénom</label>
+                                    <input type="text" id="user-firstname" autocomplete="given-name" placeholder="Prénom"
+                                        class="bcb-auth-input w-full bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3.5 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] uppercase font-bold text-gray-500 mb-1.5">Nom</label>
+                                    <input type="text" id="user-lastname" autocomplete="family-name" placeholder="Nom"
+                                        class="bcb-auth-input w-full bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3.5 text-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-gray-500 mb-1.5">Adresse email</label>
+                                <div class="relative">
+                                    <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                    <input type="email" id="user-email" required autocomplete="email" placeholder="nom@exemple.com"
+                                        class="bcb-auth-input w-full bg-gray-50 border border-gray-200 rounded-2xl pl-11 pr-4 py-3.5 text-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <label class="block text-[10px] uppercase font-bold text-gray-500">Mot de passe</label>
+                                    <button type="button" onclick="showForgotPassword()" id="forgot-password-link" class="text-[10px] font-bold text-gray-500 hover:text-black">
+                                        Mot de passe oublié ?
+                                    </button>
+                                </div>
+                                <div class="relative">
+                                    <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                    <input type="password" id="user-password" required autocomplete="current-password" placeholder="••••••••"
+                                        class="bcb-auth-input w-full bg-gray-50 border border-gray-200 rounded-2xl pl-11 pr-12 py-3.5 text-sm">
+                                    <button type="button" onclick="togglePasswordVisibility()" aria-label="Afficher le mot de passe"
+                                        class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl hover:bg-gray-200 text-gray-400 hover:text-black">
+                                        <i id="password-eye" class="fa-regular fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <label id="remember-row" class="flex items-center gap-2 text-[11px] text-gray-500 cursor-pointer">
+                                <input id="remember-me" type="checkbox" class="accent-black w-4 h-4">
+                                Rester connecté sur cet appareil
+                            </label>
+
+                            <button type="submit" id="auth-submit-btn"
+                                class="w-full bg-black hover:bg-neutral-800 text-white font-bold py-4 rounded-2xl text-xs uppercase tracking-widest transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0">
+                                Se connecter
+                            </button>
+                        </form>
+
+                        <div id="forgot-panel" class="hidden">
+                            <div class="bg-gray-50 rounded-2xl p-4 text-xs text-gray-600 leading-relaxed mb-4">
+                                Entrez votre adresse email. Dans une vraie version connectée à un serveur, un lien de récupération serait envoyé ici.
+                            </div>
+                            <button onclick="sendPasswordReset()" class="w-full bg-black text-white font-bold py-4 rounded-2xl text-xs uppercase tracking-widest hover:bg-neutral-800">
+                                Envoyer la demande
+                            </button>
+                            <button onclick="hideForgotPassword()" class="w-full mt-2 py-3 text-xs font-bold text-gray-500 hover:text-black">
+                                ← Retour à la connexion
+                            </button>
+                        </div>
+
+                        <div id="auth-success" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-2xl text-center">
+                            <p class="font-bold text-sm">✓ Bienvenue dans le Club !</p>
+                            <p id="auth-success-text" class="text-emerald-700 mt-1">Connexion établie avec succès.</p>
+                        </div>
+
+                        <p class="text-[9px] text-gray-400 text-center mt-6 leading-relaxed">
+                            Démonstration front-end : cette interface ne crée pas encore de compte réel sur un serveur.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -658,12 +744,64 @@
         };
 
         function openAuthModal() {
-            document.getElementById('auth-modal').classList.remove('hidden');
+            const modal = document.getElementById('auth-modal');
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            hideForgotPassword();
+            switchAuthTab(authMode);
+            setTimeout(() => document.getElementById('user-email')?.focus(), 120);
         }
 
         function closeAuthModal() {
             document.getElementById('auth-modal').classList.add('hidden');
             document.getElementById('auth-success').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+            document.getElementById('auth-form').reset();
+            hideForgotPassword();
+        }
+
+        function togglePasswordVisibility() {
+            const input = document.getElementById('user-password');
+            const eye = document.getElementById('password-eye');
+            const visible = input.type === 'text';
+            input.type = visible ? 'password' : 'text';
+            eye.className = visible ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash';
+        }
+
+        function showForgotPassword() {
+            document.getElementById('auth-form').classList.add('hidden');
+            document.getElementById('forgot-panel').classList.remove('hidden');
+            document.getElementById('auth-title').textContent = 'Récupération';
+            document.getElementById('auth-subtitle').textContent = 'Recevez les instructions pour récupérer votre accès.';
+            document.getElementById('auth-kicker').textContent = 'Compte BCB';
+        }
+
+        function hideForgotPassword() {
+            document.getElementById('forgot-panel').classList.add('hidden');
+            document.getElementById('auth-form').classList.remove('hidden');
+            document.getElementById('auth-title').textContent = authMode === 'login' ? 'Connexion' : 'Créer un compte';
+            document.getElementById('auth-kicker').textContent = 'Espace membre';
+            document.getElementById('auth-subtitle').textContent = authMode === 'login'
+                ? 'Connectez-vous pour retrouver vos favoris et préférences.'
+                : 'Créez votre compte BCB Club pour personnaliser votre expérience.';
+        }
+
+        function sendPasswordReset() {
+            const email = document.getElementById('user-email').value.trim();
+            if (!email) {
+                document.getElementById('user-email').focus();
+                return;
+            }
+            document.getElementById('forgot-panel').innerHTML = `
+                <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 text-center">
+                    <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <p class="font-bold text-sm text-emerald-900">Demande enregistrée</p>
+                    <p class="text-xs text-emerald-700 mt-1">La récupération réelle nécessitera le branchement d'un service d'authentification.</p>
+                </div>
+                <button onclick="hideForgotPassword()" class="w-full mt-3 py-3 text-xs font-bold text-gray-500 hover:text-black">← Retour</button>
+            `;
         }
 
         function openProfileModal() {
@@ -702,7 +840,7 @@
                 navAvatar.classList.remove('hidden');
                 navDefault.classList.add('hidden');
             } else {
-                topAction.innerHTML = `<button onclick="openAuthModal()" class="hover:text-black transition-colors font-semibold cursor-pointer">S'identifier</button>`;
+                topAction.innerHTML = `<button onclick="window.location.href='connexion.html'" class="hover:text-black transition-colors font-semibold cursor-pointer">S'identifier</button>`;
                 navAvatar.classList.add('hidden');
                 navDefault.classList.remove('hidden');
             }
@@ -924,48 +1062,78 @@
             const nameFields = document.getElementById('name-fields-group');
             const subtitle = document.getElementById('auth-subtitle');
             const submitBtn = document.getElementById('auth-submit-btn');
+            const forgot = document.getElementById('forgot-password-link');
+            const remember = document.getElementById('remember-row');
+            const password = document.getElementById('user-password');
 
             if (mode === 'login') {
-                tabLogin.className = "flex-1 py-2.5 rounded-full bg-black text-white transition-all shadow-sm cursor-pointer";
-                tabRegister.className = "flex-1 py-2.5 rounded-full text-gray-600 hover:text-black transition-all cursor-pointer";
+                tabLogin.className = "flex-1 py-3 rounded-xl bg-black text-white text-xs font-bold transition-all shadow-sm";
+                tabRegister.className = "flex-1 py-3 rounded-xl text-gray-500 hover:text-black text-xs font-bold transition-all";
                 nameFields.classList.add('hidden');
                 document.getElementById('user-firstname').removeAttribute('required');
                 document.getElementById('user-lastname').removeAttribute('required');
                 subtitle.textContent = "Connectez-vous pour retrouver vos favoris et préférences.";
                 submitBtn.textContent = "Se connecter";
+                forgot.classList.remove('hidden');
+                remember.classList.remove('hidden');
+                password.autocomplete = 'current-password';
             } else {
-                tabRegister.className = "flex-1 py-2.5 rounded-full bg-black text-white transition-all shadow-sm cursor-pointer";
-                tabLogin.className = "flex-1 py-2.5 rounded-full text-gray-600 hover:text-black transition-all cursor-pointer";
+                tabRegister.className = "flex-1 py-3 rounded-xl bg-black text-white text-xs font-bold transition-all shadow-sm";
+                tabLogin.className = "flex-1 py-3 rounded-xl text-gray-500 hover:text-black text-xs font-bold transition-all";
                 nameFields.classList.remove('hidden');
                 document.getElementById('user-firstname').setAttribute('required', 'true');
                 document.getElementById('user-lastname').setAttribute('required', 'true');
-                subtitle.textContent = "Créez votre compte BCB Club pour profiter d'avantages exclusifs.";
+                subtitle.textContent = "Créez votre compte BCB Club pour personnaliser votre expérience.";
                 submitBtn.textContent = "Créer mon compte";
+                forgot.classList.add('hidden');
+                remember.classList.add('hidden');
+                password.autocomplete = 'new-password';
             }
+
+            document.getElementById('auth-title').textContent = mode === 'login' ? 'Connexion' : 'Créer un compte';
         }
 
         function handleAuthSubmit(e) {
             e.preventDefault();
-            const email = document.getElementById('user-email').value;
-            
+
+            const email = document.getElementById('user-email').value.trim();
+            const password = document.getElementById('user-password').value;
+
+            if (!email || !password) return;
+
             if (authMode === 'register') {
-                currentUser.firstname = document.getElementById('user-firstname').value;
-                currentUser.lastname = document.getElementById('user-lastname').value;
+                currentUser.firstname = document.getElementById('user-firstname').value.trim();
+                currentUser.lastname = document.getElementById('user-lastname').value.trim();
+                currentUser.pseudo = '@' + (
+                    (currentUser.firstname + currentUser.lastname)
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]/g, '')
+                    .slice(0, 18) || 'bcb'
+                );
             } else {
                 currentUser.firstname = email.split('@')[0];
                 currentUser.lastname = "";
             }
-            
+
             currentUser.email = email;
             currentUser.isLoggedIn = true;
+
+            if (document.getElementById('remember-me').checked) {
+                localStorage.setItem('bcb_demo_session', 'true');
+            }
+
             updateUIAuth();
 
             const successBox = document.getElementById('auth-success');
+            const successText = document.getElementById('auth-success-text');
+            successText.textContent = authMode === 'register'
+                ? 'Votre espace membre est prêt.'
+                : 'Connexion établie avec succès.';
             successBox.classList.remove('hidden');
 
             setTimeout(() => {
                 closeAuthModal();
-            }, 1500);
+            }, 1200);
         }
 
         function handleCookies(action) {
