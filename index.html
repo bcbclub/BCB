@@ -79,9 +79,10 @@
     <!-- MAIN NAVBAR -->
     <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
         <div class="max-w-[1920px] mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
-            <!-- User Login Icon Logo Replacement (Without border) -->
+            <!-- User Login Icon Logo Replacement -->
             <div class="flex items-center space-x-2 sm:space-x-3">
-                <button onclick="handleUserNavAction()" class="w-9 h-9 sm:w-10 sm:h-10 hover:bg-gray-100 flex items-center justify-center text-gray-900 text-lg sm:text-xl transition-all duration-300 hover:scale-105 cursor-pointer shrink-0 overflow-hidden" title="Profil / Compte">
+                <button onclick="handleUserNavAction()" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-900 text-lg sm:text-xl transition-all duration-300 hover:scale-105 cursor-pointer shrink-0 overflow-hidden border border-gray-200" title="Profil / Compte">
+                    <img id="nav-avatar-icon" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover hidden" alt="Avatar">
                     <i id="nav-default-icon" class="fa-regular fa-user"></i>
                 </button>
                 <span class="font-anton text-lg tracking-tight sm:hidden cursor-pointer" onclick="resetFilter()">BCB</span>
@@ -95,7 +96,6 @@
                 <a href="#trending-section" onclick="filterByCategory('Running')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Running</a>
                 <a href="#trending-section" onclick="filterByCategory('Formule 1')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Formule 1</a>
                 <a href="#trending-section" onclick="filterByCategory('Cyclisme')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Cyclisme</a>
-                <a href="#quiz-section" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Quiz Quiz</a>
             </div>
 
             <!-- Search and Icons with Fluid Animation -->
@@ -193,7 +193,7 @@
         </div>
     </header>
 
-    <!-- TRENDING SECTION (Secondary International News with Category Filtering & Restored Card Design) -->
+    <!-- TRENDING SECTION (Secondary International News with Category Filtering) -->
     <section id="trending-section" class="max-w-[1920px] mx-auto px-4 sm:px-8 py-10 sm:py-16">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
             <div>
@@ -211,7 +211,7 @@
             </div>
         </div>
 
-        <div id="trending-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div id="trending-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             <!-- Dynamically populated trending news -->
         </div>
     </section>
@@ -298,22 +298,6 @@
         </div>
     </section>
 
-    <!-- INTERACTIVE SPORTS QUIZ SECTION -->
-    <section id="quiz-section" class="max-w-[1920px] mx-auto px-4 sm:px-8 py-10 sm:py-16">
-        <div class="bg-white border border-gray-200 rounded-3xl p-6 sm:p-10 shadow-lg max-w-4xl mx-auto relative overflow-hidden">
-            <div id="confetti-container" class="absolute inset-0 pointer-events-none z-20 overflow-hidden"></div>
-            <div class="text-center mb-8 relative z-10">
-                <span class="bg-gray-100 text-gray-800 text-[10px] sm:text-xs font-bold uppercase px-3.5 py-1.5 rounded-full tracking-wider mb-2 inline-block">🧠 DÉBALLAGE DE CULTURE SPORTIVE</span>
-                <h2 class="font-anton text-2xl sm:text-3xl md:text-4xl uppercase tracking-tight">Le Quiz Flash BCB</h2>
-                <p class="text-xs sm:text-sm text-gray-500 mt-1">Testez vos connaissances en 3 questions clés sur l'actualité sportive internationale.</p>
-            </div>
-
-            <div id="quiz-container" class="space-y-6 relative z-10">
-                <!-- Dynamically updated quiz question -->
-            </div>
-        </div>
-    </section>
-
     <!-- AUTHENTICATION / REGISTRATION MODAL -->
     <div id="auth-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-white text-black rounded-3xl p-6 sm:p-8 max-w-md w-full relative shadow-2xl animate-modal">
@@ -373,11 +357,19 @@
             
             <div class="text-center mb-6">
                 <h3 class="font-anton text-2xl tracking-wide mb-1">RÉGLAGES DU PROFIL</h3>
-                <p class="text-xs text-gray-500 font-medium">Mettez à jour vos informations personnelles.</p>
+                <p class="text-xs text-gray-500 font-medium">Personnalisez vos informations personnelles et votre image.</p>
             </div>
 
             <!-- Profile Form -->
             <form id="profile-form" onsubmit="handleProfileUpdate(event)" class="space-y-4">
+                <div class="flex flex-col items-center mb-4">
+                    <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-black shadow-md mb-2 relative group">
+                        <img id="profile-preview-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Avatar preview">
+                    </div>
+                    <label class="block text-xs uppercase font-bold text-gray-600 mb-1">URL de l'image de profil</label>
+                    <input type="url" id="profile-avatar-input" placeholder="https://images.unsplash.com/..." class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-black transition-colors">
+                </div>
+
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-[10px] uppercase font-bold text-gray-600 mb-1">Prénom</label>
@@ -390,8 +382,18 @@
                 </div>
 
                 <div>
+                    <label class="block text-xs uppercase font-bold text-gray-600 mb-1">Pseudo / Pseudo du Club</label>
+                    <input type="text" id="profile-pseudo" placeholder="@pseudo" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-black transition-colors">
+                </div>
+
+                <div>
                     <label class="block text-xs uppercase font-bold text-gray-600 mb-1">Adresse email</label>
                     <input type="email" id="profile-email" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-black transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-bold text-gray-600 mb-1">Biographie</label>
+                    <textarea id="profile-bio" rows="3" placeholder="Parlez de vous en quelques mots..." class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-black transition-colors resize-none"></textarea>
                 </div>
 
                 <div class="flex space-x-3 pt-2">
@@ -565,249 +567,523 @@
                 image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
                 media: "Velo Pro International",
                 fullText: "Trouver l'équilibre parfait entre rigidité du cadre, inclinaison de la selle et souplesse du tronc permet d'éviter les tensions dans le bas du dos lors des étapes de montagne excédant 200 kilomètres."
+            },
+            {
+                badge: "Basketball",
+                category: "Basketball",
+                title: "La tactique secrète des franchises pour verrouiller le rebond défensif",
+                description: "Décryptage des schémas de box-out adoptés par les meilleurs coachs de la ligue nord-américaine.",
+                image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800&auto=format&fit=crop",
+                media: "Basket Tactique",
+                fullText: "Maîtriser le rebond défensif est la clé pour lancer des transitions offensives foudroyantes. Les entraîneurs analysent chaque centimètre carré de placement sous le cercle."
+            },
+            {
+                badge: "Tennis",
+                category: "Tennis",
+                title: "L'évolution des raquettes high-tech et leur impact sur la puissance",
+                description: "Comment les matériaux composites révolutionnent le jeu des jeunes prodiges sur le circuit.",
+                image: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=80&w=800&auto=format&fit=crop",
+                media: "TennisTech Mag",
+                fullText: "L'allègement des cadres couplé à des tamis élargis permet de générer des effets liftés dévastateurs tout en préservant le bras des joueurs lors des échanges prolongés."
+            },
+            {
+                badge: "Rugby",
+                category: "Rugby",
+                title: "Le combat des avants dans les rucks : décryptage vidéo",
+                description: "Analyse des duels d'impact lors du Tournoi des 6 Nations et des phases finales internationales.",
+                image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
+                media: "Ovalie News",
+                fullText: "La conquête au sol et la vitesse de libération du ballon sont les deux axes majeurs travaillés par les sélections pour déstabiliser les défenses hermétiques."
+            },
+            {
+                badge: "Natation",
+                category: "Natation",
+                title: "Technique de coulée : les secrets des champions olympiques",
+                description: "Étude biomécanique des battements sous l'eau après les virages en bassin de 50 mètres.",
+                image: "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=800&auto=format&fit=crop",
+                media: "Aquatic Pro",
+                fullText: "La phase sous-marine représente plus de 30% d'une course de sprint. Optimiser la position hydrodynamique permet de gagner de precieuses dixières de seconde."
+            },
+            {
+                badge: "Boxe",
+                category: "Boxe",
+                title: "La préparation mentale des combattants avant les championnats du monde",
+                description: "Gestion du stress, visualisation et concentration absolue dans les vestiaires.",
+                image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop",
+                media: "Fight Club Mag",
+                fullText: "Avant de monter sur le ring, les boxeurs professionnels utilisent des techniques de respiration profonde pour abaisser leur rythme cardiaque et canaliser leur adrénaline."
+            },
+            {
+                badge: "Skate",
+                category: "Skate",
+                title: "L'essor de la culture skate aux Jeux Olympiques : entre art et sport",
+                description: "Comment la discipline a conquis un nouveau public mondial sans perdre son âme urbaine.",
+                image: "https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?q=80&w=800&auto=format&fit=crop",
+                media: "Urban Glide",
+                fullText: "Le street et le park exigent une précision chirurgicale et une créativité de chaque instant. Les jeunes talents repoussent sans cesse les limites de la gravité sur les modules officiels."
+            },
+            {
+                badge: "Fitness",
+                category: "Fitness",
+                title: "Hypertrophie et récupération : le guide complet de la nutrition sportive",
+                description: "Répartition optimale des macronutriments pour maximiser la prise de muscle sèche.",
+                image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop",
+                media: "Fitness Lab",
+                fullTest: "L'apport protéique post-entraînement combiné à une bonne hydratation garantit une synthèse protéique maximale et réduit considérablement les courbatures."
+            },
+            {
+                badge: "Esport",
+                category: "Esport",
+                title: "Les réflexes de l'e-sport comparable à ceux des pilotes de chasse",
+                description: "Étude comparative sur les temps de réaction des pro-gamers lors des tournois internationaux.",
+                image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
+                media: "Esport Chronicle",
+                fullText: "Avec plus de 300 actions par minute sur les jeux de stratégie et de tir tactique, la concentration requise est totale et sollicite intensément le système nerveux central."
             }
         ];
 
-        function renderTrendingNews(newsList) {
-            const container = document.getElementById('trending-container');
-            if (!container) return;
+        let currentSlideIndex = 0;
+        let isPaused = false;
+        let slideInterval;
+        let authMode = 'login';
+        
+        let currentUser = {
+            isLoggedIn: false,
+            firstname: "Alexandre",
+            lastname: "Dupont",
+            pseudo: "@alex_bcb",
+            email: "alexandre.dupont@bcb.com",
+            bio: "Passionné de sport, de running et de football. Toujours à l'affût des dernières actus internationales !",
+            avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
+        };
+
+        function openAuthModal() {
+            document.getElementById('auth-modal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+            document.getElementById('auth-success').classList.add('hidden');
+        }
+
+        function openProfileModal() {
+            document.getElementById('profile-firstname').value = currentUser.firstname;
+            document.getElementById('profile-lastname').value = currentUser.lastname;
+            document.getElementById('profile-pseudo').value = currentUser.pseudo;
+            document.getElementById('profile-email').value = currentUser.email;
+            document.getElementById('profile-bio').value = currentUser.bio;
+            document.getElementById('profile-avatar-input').value = currentUser.avatar;
+            document.getElementById('profile-preview-img').src = currentUser.avatar;
             
-            if (newsList.length === 0) {
-                container.innerHTML = `<div class="col-span-full py-12 text-center text-gray-500 font-medium">Aucun article trouvé pour cette recherche ou catégorie.</div>`;
+            document.getElementById('profile-modal').classList.remove('hidden');
+            document.getElementById('profile-success').classList.add('hidden');
+        }
+
+        function closeProfileModal() {
+            document.getElementById('profile-modal').classList.add('hidden');
+        }
+
+        function handleUserNavAction() {
+            if (currentUser.isLoggedIn) {
+                openProfileModal();
+            } else {
+                openAuthModal();
+            }
+        }
+
+        function updateUIAuth() {
+            const topAction = document.getElementById('auth-top-action');
+            const navAvatar = document.getElementById('nav-avatar-icon');
+            const navDefault = document.getElementById('nav-default-icon');
+
+            if (currentUser.isLoggedIn) {
+                topAction.innerHTML = `<button onclick="openProfileModal()" class="hover:text-black transition-colors font-bold cursor-pointer text-black flex items-center space-x-1.5"><i class="fa-solid fa-circle-user text-xs"></i><span>${currentUser.firstname} ${currentUser.lastname}</span></button>`;
+                navAvatar.src = currentUser.avatar;
+                navAvatar.classList.remove('hidden');
+                navDefault.classList.add('hidden');
+            } else {
+                topAction.innerHTML = `<button onclick="openAuthModal()" class="hover:text-black transition-colors font-semibold cursor-pointer">S'identifier</button>`;
+                navAvatar.classList.add('hidden');
+                navDefault.classList.remove('hidden');
+            }
+        }
+
+        function handleProfileUpdate(e) {
+            e.preventDefault();
+            currentUser.firstname = document.getElementById('profile-firstname').value;
+            currentUser.lastname = document.getElementById('profile-lastname').value;
+            currentUser.pseudo = document.getElementById('profile-pseudo').value;
+            currentUser.email = document.getElementById('profile-email').value;
+            currentUser.bio = document.getElementById('profile-bio').value;
+            currentUser.avatar = document.getElementById('profile-avatar-input').value || currentUser.avatar;
+
+            document.getElementById('profile-preview-img').src = currentUser.avatar;
+            updateUIAuth();
+
+            const successBox = document.getElementById('profile-success');
+            successBox.classList.remove('hidden');
+
+            setTimeout(() => {
+                closeProfileModal();
+            }, 1500);
+        }
+
+        function logoutUser() {
+            currentUser.isLoggedIn = false;
+            updateUIAuth();
+            closeProfileModal();
+        }
+
+        function closeSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+            collapseSearch();
+        }
+
+        function closeArticleModal() {
+            document.getElementById('article-modal').classList.add('hidden');
+        }
+
+        function expandSearch() {
+            const container = document.getElementById('search-container');
+            const closeBtn = document.getElementById('search-close-btn');
+            const modal = document.getElementById('search-modal');
+            
+            container.classList.add('search-expanded');
+            closeBtn.classList.remove('hidden');
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.style.opacity = '1';
+            }, 10);
+        }
+
+        function collapseSearch(e) {
+            if (e) e.stopPropagation();
+            const container = document.getElementById('search-container');
+            const closeBtn = document.getElementById('search-close-btn');
+            const modal = document.getElementById('search-modal');
+            
+            container.classList.remove('search-expanded');
+            closeBtn.classList.add('hidden');
+            
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+            
+            document.getElementById('search-input').value = '';
+            document.getElementById('search-suggestions').classList.remove('hidden');
+            document.getElementById('search-results-container').innerHTML = '';
+        }
+
+        function setSearchQuery(queryText) {
+            const input = document.getElementById('search-input');
+            input.value = queryText;
+            handleSearchInput({ target: input });
+        }
+
+        function openArticle(item) {
+            const modal = document.getElementById('article-modal');
+            const container = document.getElementById('article-modal-content');
+            
+            container.innerHTML = `
+                <div class="mb-4">
+                    <span class="bg-gray-100 text-gray-800 text-[10px] sm:text-xs font-bold uppercase px-3 py-1.5 rounded-full">${item.badge || item.category}</span>
+                </div>
+                <h2 class="font-anton text-2xl sm:text-3xl md:text-4xl uppercase tracking-tight mb-4">${item.title}</h2>
+                <div class="flex items-center space-x-3 mb-6 text-xs sm:text-sm text-gray-500 border-b border-gray-100 pb-4">
+                    <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-xs shadow-sm shrink-0">BCB</div>
+                    <div>
+                        <p class="font-bold text-black">Publié par <span class="text-blue-600">${item.media || 'Rédaction Internationale BCB'}</span></p>
+                        <p class="text-[10px] sm:text-xs">Actualité vérifiée en direct</p>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden mb-6 aspect-[16/9] shadow-md">
+                    <img src="${item.image}" class="w-full h-full object-cover" alt="Article image">
+                </div>
+                <p class="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed font-medium mb-6">
+                    ${item.description}
+                </p>
+                <div class="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed space-y-4 border-t border-gray-100 pt-6">
+                    <p>${item.fullText || "Les analyses approfondies démontrent que cet événement marque un tournant majeur dans la saison sportive en cours. Les experts continuent de suivre de près l'évolution des performances et des classements officiels."}</p>
+                    <p>Restez connectés sur l'écosystème BCB pour ne rien rater des prochaines échéances et des interviews exclusives de nos athlètes ambassadeurs.</p>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function renderTrending(itemsToRender) {
+            const container = document.getElementById('trending-container');
+            if (itemsToRender.length === 0) {
+                container.innerHTML = `<div class="col-span-3 text-center py-12 text-gray-500 font-medium bg-gray-50 rounded-3xl border border-gray-100"><p class="text-base font-bold text-black mb-1">Aucun article trouvé</p><p class="text-xs text-gray-500">Essayez une autre catégorie ou réinitialisez le filtre.</p></div>`;
                 return;
             }
-
-            container.innerHTML = newsList.map((item, idx) => `
-                <div onclick='openArticleFromList(${JSON.stringify(item)})' class="group cursor-pointer bg-white rounded-3xl p-4 sm:p-5 border border-gray-100 hover:border-gray-300 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            container.innerHTML = itemsToRender.map((item, idx) => `
+                <div onclick='openArticle(${JSON.stringify(item)})' class="group cursor-pointer bg-white p-4 sm:p-5 rounded-3xl hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between hover:-translate-y-1.5">
                     <div>
-                        <div class="relative rounded-2xl overflow-hidden mb-4 bg-gray-100 aspect-[16/10]">
-                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-black text-[10px] font-bold uppercase px-3 py-1 rounded-full shadow-sm">${item.badge}</span>
+                        <div class="bg-[#f5f5f5] rounded-2xl overflow-hidden aspect-[4/3] mb-4 relative shadow-inner">
+                            <img src="${item.image}" alt="Actu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                            <span class="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/90 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase shadow-sm">${item.badge}</span>
                         </div>
-                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block">${item.media}</span>
-                        <h3 class="font-anton text-lg sm:text-xl tracking-tight mb-2 group-hover:underline text-gray-900">${item.title}</h3>
-                        <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed mb-4">${item.description}</p>
+                        <span class="text-[10px] sm:text-xs font-bold uppercase text-gray-500 tracking-wider">${item.category}</span>
+                        <h3 class="font-bold text-sm sm:text-base mt-1.5 group-hover:underline line-clamp-2">${item.title}</h3>
+                        <p class="text-gray-500 text-xs sm:text-sm mt-1.5 line-clamp-2">${item.description}</p>
                     </div>
-                    <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
-                        <span class="text-[11px] font-bold text-black uppercase tracking-wider group-hover:translate-x-1 transition-transform">Lire l'article <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    <div class="mt-4 sm:mt-5 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] sm:text-xs text-gray-400 font-semibold">
+                        <span class="truncate mr-2">Source : ${item.media}</span>
+                        <span class="text-black group-hover:translate-x-1 transition-transform duration-300 font-bold shrink-0">Lire <i class="fa-solid fa-arrow-right ml-1"></i></span>
                     </div>
                 </div>
             `).join('');
         }
 
-        function openArticleFromList(item) {
-            openArticle(item);
+        function filterByCategory(categoryName) {
+            const heading = document.getElementById('section-heading');
+            const subheading = document.getElementById('section-subheading');
+            const resetBtn = document.getElementById('reset-filter-btn');
+
+            heading.textContent = "Catégorie : " + categoryName;
+            subheading.textContent = "Tous les articles et actualités concernant " + categoryName;
+            resetBtn.classList.remove('hidden');
+
+            const allItems = [...sportsNews, ...trendingNews];
+            const filtered = allItems.filter(item => 
+                item.category.toLowerCase().includes(categoryName.toLowerCase()) || 
+                item.badge.toLowerCase().includes(categoryName.toLowerCase()) ||
+                item.title.toLowerCase().includes(categoryName.toLowerCase()) ||
+                item.description.toLowerCase().includes(categoryName.toLowerCase())
+            );
+
+            renderTrending(filtered);
+            
+            const element = document.getElementById('trending-section');
+            element.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Initialize on load
-        window.addEventListener('DOMContentLoaded', () => {
-            renderTrendingNews(trendingNews);
-            startSlider();
-        });
+        function resetFilter() {
+            const heading = document.getElementById('section-heading');
+            const subheading = document.getElementById('section-subheading');
+            const resetBtn = document.getElementById('reset-filter-btn');
 
-        // Hero Slider State & Logic
-        let currentSlideIndex = 0;
-        let sliderInterval = null;
-        let isSliderPaused = false;
+            heading.textContent = "Tendances";
+            subheading.textContent = "Les actualités internationales les plus consultées du moment.";
+            resetBtn.classList.add('hidden');
 
-        function updateSlider(index) {
-            const item = sportsNews[index];
-            const bgImg = document.getElementById('hero-bg-img');
-            const badge = document.getElementById('hero-badge');
-            const source = document.getElementById('hero-source');
-            const title = document.getElementById('hero-title');
-            const desc = document.getElementById('hero-desc');
-            const btn = document.getElementById('hero-btn');
-            const contentBox = document.getElementById('hero-content-box');
+            renderTrending(trendingNews);
+        }
 
-            if (!bgImg) return;
+        function handleSearchInput(e) {
+            const query = e.target.value.trim().toLowerCase();
+            const suggestions = document.getElementById('search-suggestions');
+            const container = document.getElementById('search-results-container');
+            const titleElem = document.getElementById('search-results-title');
 
-            contentBox.style.opacity = '0';
-            contentBox.style.transform = 'translateY(15px)';
+            if (query.length === 0) {
+                suggestions.classList.remove('hidden');
+                titleElem.textContent = "RÉSULTATS DE RECHERCHE";
+                container.innerHTML = '';
+                return;
+            }
 
-            setTimeout(() => {
-                bgImg.src = item.image;
-                badge.textContent = item.badge;
-                source.textContent = `Source : ${item.media}`;
-                title.textContent = item.title;
-                desc.textContent = item.description;
-                btn.textContent = item.buttonText;
+            suggestions.classList.add('hidden');
+            titleElem.textContent = `RÉSULTATS POUR "${query.toUpperCase()}"`;
 
-                contentBox.style.opacity = '1';
-                contentBox.style.transform = 'translateY(0)';
-            }, 300);
+            const allItems = [...sportsNews, ...trendingNews];
 
-            const dotsContainer = document.getElementById('slider-dots');
-            if (dotsContainer) {
-                dotsContainer.innerHTML = sportsNews.map((_, i) => `
-                    <button onclick="goToSlide(${i})" class="h-2 rounded-full transition-all duration-300 cursor-pointer ${i === index ? 'w-6 bg-white' : 'w-2 bg-white/40 hover:bg-white/70'}"></button>
+            const filtered = allItems.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.description.toLowerCase().includes(query) || 
+                item.category.toLowerCase().includes(query) ||
+                item.badge.toLowerCase().includes(query)
+            );
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<p class="col-span-2 text-center text-gray-500 py-8 font-medium text-sm">Aucun résultat trouvé pour "${query}". Essayez un autre mot-clé...</p>`;
+            } else {
+                container.innerHTML = filtered.map((item) => `
+                    <div onclick='closeSearchModal(); openArticle(${JSON.stringify(item)});' class="flex space-x-3 sm:space-x-4 bg-gray-50 p-3 sm:p-4 rounded-2xl cursor-pointer hover:bg-gray-100 transition-all duration-300">
+                        <img src="${item.image}" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl shrink-0 shadow-sm" alt="News">
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[9px] sm:text-[10px] font-bold uppercase text-gray-500 tracking-wider block truncate">${item.category} • ${item.media}</span>
+                            <h4 class="font-bold text-xs sm:text-sm mt-0.5 line-clamp-1">${item.title}</h4>
+                            <p class="text-[11px] sm:text-xs text-gray-600 mt-1 line-clamp-2">${item.description}</p>
+                        </div>
+                    </div>
                 `).join('');
             }
         }
 
+        function switchAuthTab(mode) {
+            authMode = mode;
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegister = document.getElementById('tab-register');
+            const nameFields = document.getElementById('name-fields-group');
+            const subtitle = document.getElementById('auth-subtitle');
+            const submitBtn = document.getElementById('auth-submit-btn');
+
+            if (mode === 'login') {
+                tabLogin.className = "flex-1 py-2.5 rounded-full bg-black text-white transition-all shadow-sm cursor-pointer";
+                tabRegister.className = "flex-1 py-2.5 rounded-full text-gray-600 hover:text-black transition-all cursor-pointer";
+                nameFields.classList.add('hidden');
+                document.getElementById('user-firstname').removeAttribute('required');
+                document.getElementById('user-lastname').removeAttribute('required');
+                subtitle.textContent = "Connectez-vous pour retrouver vos favoris et préférences.";
+                submitBtn.textContent = "Se connecter";
+            } else {
+                tabRegister.className = "flex-1 py-2.5 rounded-full bg-black text-white transition-all shadow-sm cursor-pointer";
+                tabLogin.className = "flex-1 py-2.5 rounded-full text-gray-600 hover:text-black transition-all cursor-pointer";
+                nameFields.classList.remove('hidden');
+                document.getElementById('user-firstname').setAttribute('required', 'true');
+                document.getElementById('user-lastname').setAttribute('required', 'true');
+                subtitle.textContent = "Créez votre compte BCB Club pour profiter d'avantages exclusifs.";
+                submitBtn.textContent = "Créer mon compte";
+            }
+        }
+
+        function handleAuthSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('user-email').value;
+            
+            if (authMode === 'register') {
+                currentUser.firstname = document.getElementById('user-firstname').value;
+                currentUser.lastname = document.getElementById('user-lastname').value;
+            } else {
+                currentUser.firstname = email.split('@')[0];
+                currentUser.lastname = "";
+            }
+            
+            currentUser.email = email;
+            currentUser.isLoggedIn = true;
+            updateUIAuth();
+
+            const successBox = document.getElementById('auth-success');
+            successBox.classList.remove('hidden');
+
+            setTimeout(() => {
+                closeAuthModal();
+            }, 1500);
+        }
+
+        function handleCookies(action) {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('animate-exit');
+            setTimeout(() => {
+                banner.classList.add('hidden');
+                banner.classList.remove('animate-exit');
+            }, 300);
+            localStorage.setItem('bcb_cookies', action);
+        }
+
+        function initSlider() {
+            const dotsContainer = document.getElementById('slider-dots');
+            dotsContainer.innerHTML = '';
+            sportsNews.forEach((_, idx) => {
+                const dot = document.createElement('span');
+                dot.className = `w-2 h-2 rounded-full transition-all duration-500 cursor-pointer ${idx === currentSlideIndex ? 'bg-white w-6' : 'bg-white/50'}`;
+                dot.onclick = () => goToSlide(idx);
+                dotsContainer.appendChild(dot);
+            });
+            updateSlideContent();
+            startInterval();
+            initSwipeGestures();
+        }
+
+        function initSwipeGestures() {
+            const slider = document.getElementById('hero-slider-container');
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            slider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    nextSlide();
+                }
+                if (touchEndX > touchStartX + 50) {
+                    prevSlide();
+                }
+            }
+        }
+
+        function updateSlideContent() {
+            const contentBox = document.getElementById('hero-content-box');
+            contentBox.style.opacity = '0';
+            contentBox.style.transform = 'translateY(15px)';
+
+            setTimeout(() => {
+                const news = sportsNews[currentSlideIndex];
+                document.getElementById('hero-badge').textContent = news.badge;
+                document.getElementById('hero-source').textContent = "Source : " + news.media;
+                document.getElementById('hero-title').innerHTML = news.title.replace(' : ', '<br>');
+                document.getElementById('hero-desc').textContent = news.description;
+                document.getElementById('hero-bg-img').src = news.image;
+
+                const dots = document.getElementById('slider-dots').children;
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].className = `w-2 h-2 rounded-full transition-all duration-500 cursor-pointer ${i === currentSlideIndex ? 'bg-white w-6' : 'bg-white/50'}`;
+                }
+
+                contentBox.style.opacity = '1';
+                contentBox.style.transform = 'translateY(0)';
+            }, 250);
+        }
+
         function nextSlide() {
             currentSlideIndex = (currentSlideIndex + 1) % sportsNews.length;
-            updateSlider(currentSlideIndex);
+            updateSlideContent();
         }
 
-        function goToSlide(index) {
-            currentSlideIndex = index;
-            updateSlider(currentSlideIndex);
-            resetSliderTimer();
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + sportsNews.length) % sportsNews.length;
+            updateSlideContent();
         }
 
-        function startSlider() {
-            updateSlider(currentSlideIndex);
-            sliderInterval = setInterval(nextSlide, 5000);
-        }
-
-        function resetSliderTimer() {
-            clearInterval(sliderInterval);
-            if (!isSliderPaused) {
-                sliderInterval = setInterval(nextSlide, 5000);
-            }
+        function goToSlide(idx) {
+            currentSlideIndex = idx;
+            updateSlideContent();
         }
 
         function togglePauseSlider() {
-            isSliderPaused = !isSliderPaused;
-            const pauseIcon = document.getElementById('pause-icon');
-            if (isSliderPaused) {
-                clearInterval(sliderInterval);
-                pauseIcon.className = "fa-solid fa-play text-[10px] sm:text-xs";
+            isPaused = !isPaused;
+            const icon = document.getElementById('pause-icon');
+            if (isPaused) {
+                clearInterval(slideInterval);
             } else {
-                sliderInterval = setInterval(nextSlide, 5000);
-                pauseIcon.className = "fa-solid fa-pause text-[10px] sm:text-xs";
+                startInterval();
             }
         }
 
-        // Quiz State
-        let currentQuizIndex = 0;
-        let quizScore = 0;
-        let quizAnswered = false;
-
-        const quizQuestions = [
-            {
-                question: "Quel joueur a rejoint le Real Madrid en tant que numéro 9 vedette ?",
-                options: ["Erling Haaland", "Kylian Mbappé", "Jude Bellingham", "Vinicius Jr"],
-                correct: 1
-            },
-            {
-                question: "Sur quel circuit se déroule le mythique Grand Prix F1 urbain aux mille virages ?",
-                options: ["Monza", "Silverstone", "Monaco", "Spa-Francorchamps"],
-                correct: 2
-            },
-            {
-                question: "Quelle nation a remporté le plus de titres consécutifs en athlétisme sur marathon mondial ?",
-                options: ["Le Kenya", "Les États-Unis", "L'Éthiopie", "La Grande-Bretagne"],
-                correct: 0
-            }
-        ];
-
-        function triggerPinkConfetti() {
-            const container = document.getElementById('confetti-container');
-            if (!container) return;
-            container.innerHTML = '';
-
-            // Création de multiples confettis roses de formes différentes
-            const colors = ['#ff69b4', '#ff1493', '#ffb6c1', '#db7093', '#c71585'];
-            for (let i = 0; i < 50; i++) {
-                const conf = document.createElement('div');
-                conf.style.position = 'absolute';
-                conf.style.width = `${Math.random() * 8 + 6}px`;
-                conf.style.height = `${Math.random() * 12 + 6}px`;
-                conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                conf.style.top = '50%';
-                conf.style.left = '50%';
-                conf.style.opacity = '1';
-                conf.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-                
-                // Animation de dispersion
-                const angle = Math.random() * Math.PI * 2;
-                const distance = Math.random() * 250 + 50;
-                const destX = Math.cos(angle) * distance;
-                const destY = Math.sin(angle) * distance - 50;
-                const rotation = Math.random() * 720 - 360;
-
-                conf.style.transition = 'all 1.2s cubic-bezier(0.1, 1, 0.3, 1)';
-                container.appendChild(conf);
-
-                setTimeout(() => {
-                    conf.style.transform = `translate(${destX}px, ${destY}px) rotate(${rotation}deg)`;
-                    conf.style.opacity = '0';
-                }, 20);
-            }
-        }
-
-        function renderQuiz() {
-            const container = document.getElementById('quiz-container');
-            if (currentQuizIndex >= quizQuestions.length) {
-                const isPerfect = quizScore === quizQuestions.length;
-                if (isPerfect) {
-                    setTimeout(triggerPinkConfetti, 100);
+        function startInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                if (!isPaused) {
+                    nextSlide();
                 }
-                container.innerHTML = `
-                    <div class="text-center py-8 space-y-4 animate-modal">
-                        <span class="text-4xl">${isPerfect ? '🎉' : '🏆'}</span>
-                        <h3 class="font-anton text-2xl uppercase">Quiz Terminé !</h3>
-                        <p class="text-sm text-gray-600 font-medium">Votre score : <strong class="text-black font-bold text-lg">${quizScore} / ${quizQuestions.length}</strong></p>
-                        ${isPerfect ? '<p class="text-xs font-bold text-pink-600 uppercase tracking-widest animate-bounce">Score Parfait ! 🌟</p>' : ''}
-                        <div class="pt-2">
-                            <p class="text-xs font-bold uppercase tracking-widest text-gray-400 bg-gray-50 border border-gray-200 py-3 px-6 rounded-full inline-block">Revenez demain pour le prochain quiz</p>
-                        </div>
-                    </div>
-                `;
-                return;
-            }
-
-            const q = quizQuestions[currentQuizIndex];
-            container.innerHTML = `
-                <div class="space-y-6">
-                    <div class="flex justify-between items-center text-xs font-bold text-gray-400 uppercase tracking-widest">
-                        <span>Question ${currentQuizIndex + 1} sur ${quizQuestions.length}</span>
-                        <span>Score : ${quizScore}</span>
-                    </div>
-                    <h3 class="font-anton text-xl sm:text-2xl text-gray-900">${q.question}</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        ${q.options.map((opt, idx) => `
-                            <button onclick="answerQuiz(${idx})" id="quiz-opt-${idx}" class="text-left bg-gray-50 hover:bg-gray-100 border border-gray-200 p-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all cursor-pointer">
-                                ${opt}
-                            </button>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-            quizAnswered = false;
+            }, 6000);
         }
 
-        function answerQuiz(selectedIndex) {
-            if (quizAnswered) return;
-            quizAnswered = true;
-            const q = quizQuestions[currentQuizIndex];
+        window.onload = function() {
+            initSlider();
+            renderTrending(trendingNews);
+            updateUIAuth();
             
-            for (let i = 0; i < q.options.length; i++) {
-                const btn = document.getElementById(`quiz-opt-${i}`);
-                if (i === q.correct) {
-                    btn.className = "text-left bg-emerald-50 border border-emerald-300 text-emerald-900 p-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all";
-                } else if (i === selectedIndex) {
-                    btn.className = "text-left bg-red-50 border border-red-300 text-red-900 p-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all";
-                } else {
-                    btn.className = "text-left bg-gray-50 opacity-50 border border-gray-200 p-4 rounded-2xl text-xs sm:text-sm font-semibold transition-all";
-                }
+            if (!localStorage.getItem('bcb_cookies')) {
+                setTimeout(() => {
+                    document.getElementById('cookie-banner').classList.remove('hidden');
+                }, 800);
             }
-
-            if (selectedIndex === q.correct) {
-                quizScore++;
-            }
-
-            setTimeout(() => {
-                currentQuizIndex++;
-                renderQuiz();
-            }, 1600);
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            renderQuiz();
-        });
+        };
     </script>
 </body>
 </html>
