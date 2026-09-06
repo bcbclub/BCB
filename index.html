@@ -835,7 +835,7 @@
             const navDefault = document.getElementById('nav-default-icon');
 
             if (currentUser.isLoggedIn) {
-                topAction.innerHTML = `<button onclick="openProfileModal()" class="hover:text-black transition-colors font-bold cursor-pointer text-black flex items-center space-x-1.5"><i class="fa-solid fa-circle-user text-xs"></i><span>${currentUser.firstname} ${currentUser.lastname}</span></button>`;
+                topAction.innerHTML = `<button onclick="window.location.href='profil.html'" class="hover:text-black transition-colors font-bold cursor-pointer text-black flex items-center space-x-1.5"><i class="fa-solid fa-circle-user text-xs"></i><span>${currentUser.firstname} ${currentUser.lastname}</span></button>`;
                 navAvatar.src = currentUser.avatar;
                 navAvatar.classList.remove('hidden');
                 navDefault.classList.add('hidden');
