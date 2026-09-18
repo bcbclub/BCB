@@ -92,14 +92,14 @@
                 <span class="font-anton text-lg tracking-tight sm:hidden cursor-pointer" onclick="resetFilter()">BCB</span>
             </div>
 
-            <!-- International News Sport Categories Navbar -->
+            <!-- Main News Categories Navbar -->
             <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-gray-900">
-                <a href="#trending-section" onclick="filterByCategory('Football')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Football</a>
-                <a href="#trending-section" onclick="filterByCategory('Basketball')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Basketball</a>
-                <a href="#trending-section" onclick="filterByCategory('Tennis')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Tennis</a>
-                <a href="#trending-section" onclick="filterByCategory('Running')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Running</a>
-                <a href="#trending-section" onclick="filterByCategory('Formule 1')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Formule 1</a>
-                <a href="#trending-section" onclick="filterByCategory('Cyclisme')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Cyclisme</a>
+                <a href="#trending-section" onclick="filterByCategory('USA')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">USA</a>
+                <a href="#trending-section" onclick="filterByCategory('France')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">France</a>
+                <a href="#trending-section" onclick="filterByCategory('International')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">International</a>
+                <a href="#trending-section" onclick="filterByCategory('Donald Trump')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Donald Trump</a>
+                <a href="#trending-section" onclick="filterByCategory('Économie')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Économie</a>
+                <a href="#trending-section" onclick="filterByCategory('Politique')" class="hover:text-gray-500 py-6 border-b-2 border-transparent hover:border-black transition-all cursor-pointer">Politique</a>
             </div>
 
             <!-- Search and Icons with Fluid Animation -->
@@ -151,14 +151,14 @@
         </div>
     </div>
 
-    <!-- HERO BANNER DYNAMIC INTERNATIONAL SPORTS NEWS SLIDER -->
+    <!-- HERO BANNER DYNAMIC NEWS SLIDER -->
     <header class="max-w-[1920px] mx-auto px-3 sm:px-4 md:px-8 py-4 sm:py-6">
         <div id="hero-slider-container" class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg bg-neutral-900 group min-h-[480px] sm:min-h-[580px] md:min-h-[700px] flex flex-col justify-end p-5 sm:p-8 md:p-16 transition-all duration-700 select-none">
             
             <!-- Background Image with dark overlay gradient & smooth scaling -->
             <div class="absolute inset-0 z-0 overflow-hidden">
                 <img id="hero-bg-img" src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1800&auto=format&fit=crop" 
-                     alt="Actu Sport International" 
+                     alt="Actualité internationale" 
                      class="w-full h-full object-cover object-center opacity-85 scale-100 group-hover:scale-105 transition-transform duration-1000">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
             </div>
@@ -176,7 +176,7 @@
                     Le capitaine des Bleus continue son aventure madrilène sous les projecteurs du Bernabeu. Entre attentes colossales et premiers pas en Liga.
                 </p>
                 <div>
-                    <button id="hero-btn" onclick='openArticle(sportsNews[currentSlideIndex])' class="bg-white hover:bg-gray-200 text-black font-bold px-6 py-3 sm:px-8 sm:py-3.5 rounded-full text-xs sm:text-sm uppercase tracking-wide transition-all duration-300 shadow-xl hover:scale-105 cursor-pointer">
+                    <button id="hero-btn" onclick='openArticle(newsArticles[currentSlideIndex])' class="bg-white hover:bg-gray-200 text-black font-bold px-6 py-3 sm:px-8 sm:py-3.5 rounded-full text-xs sm:text-sm uppercase tracking-wide transition-all duration-300 shadow-xl hover:scale-105 cursor-pointer">
                         Voir les temps forts
                     </button>
                 </div>
@@ -197,12 +197,12 @@
         </div>
     </header>
 
-    <!-- TRENDING SECTION (Secondary International News with Category Filtering) -->
+    <!-- TRENDING SECTION (News with Category Filtering) -->
     <section id="trending-section" class="max-w-[1920px] mx-auto px-4 sm:px-8 py-10 sm:py-16">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
             <div>
                 <h2 id="section-heading" class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">Tendances</h2>
-                <p id="section-subheading" class="text-xs text-gray-500 mt-1">Les actualités internationales les plus consultées du moment.</p>
+                <p id="section-subheading" class="text-xs text-gray-500 mt-1">Les actualités les plus consultées du moment.</p>
             </div>
             <div class="flex items-center space-x-3">
                 <button id="reset-filter-btn" onclick="resetFilter()" class="hidden bg-black text-white px-4 py-2 rounded-full text-xs font-bold uppercase transition-all hover:bg-neutral-800 cursor-pointer">
@@ -232,72 +232,42 @@
         </div>
     </div>
 
-    <!-- FUN SPORT CATEGORIES SECTION -->
+    <!-- NEWS CATEGORIES SECTION -->
     <section class="max-w-[1920px] mx-auto px-3 sm:px-4 md:px-8 py-10 sm:py-16 bg-[#f9f9f9] rounded-2xl sm:rounded-3xl my-8 sm:my-12 shadow-sm">
         <div class="text-center mb-8 sm:mb-10">
             <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 block">Explorer par univers</span>
-            <h2 class="font-anton text-2xl sm:text-3xl md:text-4xl uppercase tracking-tight">Catégories & Disciplines Sportives</h2>
+            <h2 class="font-anton text-2xl sm:text-3xl md:text-4xl uppercase tracking-tight">Catégories d'actualité</h2>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-            <div onclick="filterByCategory('Football')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">⚽</span>
-                <h4 class="font-bold text-xs sm:text-sm">Football</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Le roi des stades</span>
+            <div onclick="filterByCategory('USA')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🇺🇸</span>
+                <h4 class="font-bold text-xs sm:text-sm">USA</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">L'actualité américaine</span>
             </div>
-            <div onclick="filterByCategory('Basketball')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏀</span>
-                <h4 class="font-bold text-xs sm:text-sm">Basketball</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Dunks & Parquets</span>
+            <div onclick="filterByCategory('France')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🇫🇷</span>
+                <h4 class="font-bold text-xs sm:text-sm">France</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">L'actualité française</span>
             </div>
-            <div onclick="filterByCategory('Tennis')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🎾</span>
-                <h4 class="font-bold text-xs sm:text-sm">Tennis</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Aces & Match points</span>
+            <div onclick="filterByCategory('International')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🌍</span>
+                <h4 class="font-bold text-xs sm:text-sm">International</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Le monde en direct</span>
             </div>
-            <div onclick="filterByCategory('Running')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏃‍♂️</span>
-                <h4 class="font-bold text-xs sm:text-sm">Running</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Chrono & Endurance</span>
+            <div onclick="filterByCategory('Donald Trump')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🇺🇸</span>
+                <h4 class="font-bold text-xs sm:text-sm">Donald Trump</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Actualité politique américaine</span>
             </div>
-            <div onclick="filterByCategory('Formule 1')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏎️</span>
-                <h4 class="font-bold text-xs sm:text-sm">Formule 1</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Vitesse & Piste</span>
+            <div onclick="filterByCategory('Économie')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">📈</span>
+                <h4 class="font-bold text-xs sm:text-sm">Économie</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Marchés & entreprises</span>
             </div>
-            <div onclick="filterByCategory('Cyclisme')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🚴‍♂️</span>
-                <h4 class="font-bold text-xs sm:text-sm">Cyclisme</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Cols & Échappées</span>
-            </div>
-            <div onclick="filterByCategory('Rugby')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏉</span>
-                <h4 class="font-bold text-xs sm:text-sm">Rugby</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Combats & Essais</span>
-            </div>
-            <div onclick="filterByCategory('Natation')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏊‍♂️</span>
-                <h4 class="font-bold text-xs sm:text-sm">Natation</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Bassins & Records</span>
-            </div>
-            <div onclick="filterByCategory('Boxe')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🥊</span>
-                <h4 class="font-bold text-xs sm:text-sm">Boxe & MMA</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Combats épiques</span>
-            </div>
-            <div onclick="filterByCategory('Skate')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🛹</span>
-                <h4 class="font-bold text-xs sm:text-sm">Skate & Surf</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Glisse & Tricks</span>
-            </div>
-            <div onclick="filterByCategory('Fitness')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏋️‍♂️</span>
-                <h4 class="font-bold text-xs sm:text-sm">Fitness</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Force & Training</span>
-            </div>
-            <div onclick="filterByCategory('Esport')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
-                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🎮</span>
-                <h4 class="font-bold text-xs sm:text-sm">Esport</h4>
-                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Compétition geek</span>
+            <div onclick="filterByCategory('Politique')" class="bg-white hover:bg-black hover:text-white transition-all duration-300 p-4 sm:p-6 rounded-2xl shadow-sm cursor-pointer flex flex-col items-center text-center group hover:-translate-y-1 hover:shadow-md">
+                <span class="text-2xl sm:text-3xl mb-2 sm:mb-3 group-hover:scale-125 transition-transform duration-300">🏛️</span>
+                <h4 class="font-bold text-xs sm:text-sm">Politique</h4>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 group-hover:text-gray-300 mt-1">Vie publique & institutions</span>
             </div>
         </div>
     </section>
@@ -324,7 +294,7 @@
                         <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4">
                             <span class="w-2 h-2 bg-white rounded-full"></span> BCB Club
                         </span>
-                        <h2 class="font-anton text-5xl uppercase leading-none mb-5">Le sport.<br>Votre univers.</h2>
+                        <h2 class="font-anton text-5xl uppercase leading-none mb-5">L'actualité.<br>Votre univers.</h2>
                         <p class="text-sm text-gray-400 leading-relaxed max-w-sm">
                             Retrouvez vos favoris, vos préférences et votre expérience BCB au même endroit.
                         </p>
@@ -563,168 +533,105 @@
         </div>
     </footer>
 
-    <!-- SCRIPT FOR INTERNATIONAL SPORTS NEWS SLIDER & ANIMATIONS -->
+    <!-- SCRIPT FOR NEWS SLIDER & ANIMATIONS -->
     <script>
-        let sportsNews = [
+        let newsArticles = [
             {
-                badge: "Football • Ligue des Champions",
-                category: "Football",
-                title: "L'ÈRE KYLIAN MBAPPÉ AU REAL MADRID",
-                description: "Le capitaine des Bleus continue son aventure madrilène sous les projecteurs du Bernabeu. Entre attentes colossales et premiers pas en Liga, le monde du football n'a d'yeux que pour le nouveau numéro 9 de la Maison Blanche.",
-                image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1800&auto=format&fit=crop",
-                buttonText: "Voir les temps forts",
-                media: "L'Équipe Internationale",
-                fullText: "Au cœur de cette compétition prestigieuse, chaque détail tactique compte. Les entraîneurs ajustent leurs schémas de jeu pour contrer les fulgurances adverses. Devant des millions de téléspectateurs à travers le globe, les joueurs vedettes cherchent à laisser leur empreinte indélébile dans l'histoire de ce sport."
+                badge: "USA • Actualité",
+                category: "USA",
+                title: "LES ÉTATS-UNIS AU CŒUR DE L’ACTUALITÉ",
+                description: "Retrouvez les principales informations politiques, économiques et sociales venues des États-Unis.",
+                image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "BCB",
+                fullText: "BCB rassemble ici les informations majeures concernant les États-Unis, avec un traitement consacré aux faits et aux développements importants."
             },
             {
-                badge: "Basketball • NBA Finals",
-                category: "Basketball",
-                title: "PARQUET LÉGENDAIRE : LA COURSE AU TITRE",
-                description: "Le championnat international bat son plein avec des performances hors norme et un suspense haletant jusqu'aux dernières secondes.",
-                image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1800&auto=format&fit=crop",
-                buttonText: "Résultats en direct",
-                media: "BasketUSA Global",
-                fullText: "Les tirs à longue distance s'enchaînent dans une atmosphère incandescente. Les franchises se livrent un combat psychologique et physique de chaque instant. L'analyse des rebonds et de la défense en zone redéfinit les standards du basket moderne."
+                badge: "France • Actualité",
+                category: "France",
+                title: "L’ACTUALITÉ FRANÇAISE EN UN COUP D’ŒIL",
+                description: "Politique, économie, société et grands événements : les informations essentielles en France.",
+                image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "BCB",
+                fullText: "BCB propose un aperçu des principaux événements et sujets qui marquent l'actualité française."
             },
             {
-                badge: "Tennis • Grand Chelem",
-                category: "Tennis",
-                title: "LE DERNIER CARRÉ INTERNATIONAL",
-                description: "Les maîtres du court s'affrontent en finale mondiale dans des duels épiques qui marquent l'histoire du tennis moderne.",
-                image: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=80&w=1800&auto=format&fit=crop",
-                buttonText: "Suivre le tournoi",
-                media: "Tennis Magazine World",
-                fullText: "Chaque échange de balles dure plus de vingt frappes, testant les limites cardiorespiratoires des finalistes. La maîtrise mentale face à la balle de break reste le juge de paix de cette confrontation au sommet."
+                badge: "International • Monde",
+                category: "International",
+                title: "CE QUI SE PASSE DANS LE MONDE",
+                description: "Les événements internationaux qui font l'actualité, de l'Europe aux autres grandes régions du monde.",
+                image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "BCB",
+                fullText: "La rubrique International rassemble les événements et évolutions majeurs observés à travers le monde."
             },
             {
-                badge: "Running • Marathon Mondial",
-                category: "Running",
-                title: "RECORD DU MONDE FRANCHI À BERLIN",
-                description: "L'élite mondiale de l'athlétisme pulvérise les chronos sur un parcours légendaire sous les acclamations de milliers de supporters.",
-                image: "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=1800&auto=format&fit=crop",
-                buttonText: "Découvrir l'exploit",
-                media: "Athletics Weekly",
-                fullText: "Grâce à des allures métronomiques et un ravitaillement millimétré, les coureurs de tête ont brisé la barrière mythique. Les chaussures à plaque de carbone et l'aérodynamisme optimisé ont joué un rôle clé dans cette performance historique."
+                badge: "Donald Trump • USA",
+                category: "Donald Trump",
+                title: "DONALD TRUMP : LES DERNIÈRES INFORMATIONS",
+                description: "Retrouvez les déclarations, décisions et événements liés à Donald Trump dans l'actualité américaine.",
+                image: "https://images.unsplash.com/photo-1580128660010-fd027e1e1a6a?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "BCB",
+                fullText: "Cette rubrique rassemble les informations publiques et vérifiées concernant Donald Trump et son activité politique."
             }
         ];
 
         let trendingNews = [
             {
-                badge: "Football",
-                category: "Football",
-                title: "Les secrets de récupération des sélections nationales avant le mondial",
-                description: "Analyse des méthodes de sommeil et de nutrition adoptées par les stars du ballon rond.",
-                image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
-                media: "Sports Nutrition Lab",
-                fullText: "Le sommeil paradoxal et les bains glacés post-match sont devenus obligatoires dans les protocoles de la FIFA. Les diététiciens veillent à l'apport précis en glucides et en électrolytes pour éviter toute fatigue musculaire chronique."
+                badge: "USA",
+                category: "USA",
+                title: "Les principales informations à suivre aux États-Unis",
+                description: "Un aperçu des événements qui marquent l'actualité américaine.",
+                image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?q=80&w=800&auto=format&fit=crop",
+                media: "BCB",
+                fullText: "Retrouvez les principaux sujets de l'actualité américaine dans cette sélection BCB."
             },
             {
-                badge: "Football",
-                category: "Football",
-                title: "Les pépites du championnat sud-américain convoitées par les géants européens",
-                description: "Le point sur les jeunes prodiges qui affolent les recruteurs internationaux.",
-                image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800&auto=format&fit=crop",
-                media: "Mercato Live Europe",
-                fullText: "Des clubs de Premier League et de Liga envoient des délégations permanentes au Brésil et en Argentine. Les clauses libératoires s'envolent pour ces talents précoces dotés d'une technique hors du commun."
+                badge: "France",
+                category: "France",
+                title: "Les informations essentielles de l'actualité française",
+                description: "Politique, économie et société : les sujets à suivre en France.",
+                image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800&auto=format&fit=crop",
+                media: "BCB",
+                fullText: "Cette sélection présente les principaux sujets de l'actualité française."
             },
             {
-                badge: "Running",
-                category: "Running",
-                title: "Comment gérer son effort mental lors des 10 derniers kilomètres",
-                description: "Conseils de coachs internationaux pour repousser ses limites psychologiques.",
-                image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=800&auto=format&fit=crop",
-                media: "Running Coach Mag",
-                fullText: "Lorsque le mur des 30 kilomètres ou des 10 derniers arrive, la dissociation mentale est la technique privilégiée. En se concentrant sur sa respiration et en fractionnant l'objectif en segments de 500 mètres, l'athlète surmonte la douleur."
+                badge: "International",
+                category: "International",
+                title: "Les grands événements internationaux",
+                description: "Les informations qui dépassent les frontières.",
+                image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=800&auto=format&fit=crop",
+                media: "BCB",
+                fullText: "Découvrez les événements internationaux suivis par BCB."
             },
             {
-                badge: "Formule 1",
-                category: "Formule 1",
-                title: "L'impact de l'intelligence artificielle sur la stratégie des écuries",
-                description: "Comment les algorithmes prédisent la dégradation des gommes en temps réel sur le circuit.",
-                image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=800&auto=format&fit=crop",
-                media: "Auto Moto Tech",
-                fullText: "Pendant les grands prix, des millions de points de données sont traités par seconde. Les ingénieurs simulent des milliers de scénarios d'arrêts aux stands pour offrir le meilleur compromis stratégique à leurs pilotes."
+                badge: "Donald Trump",
+                category: "Donald Trump",
+                title: "Donald Trump : déclarations et actualité politique",
+                description: "Les dernières informations concernant le président américain.",
+                image: "https://images.unsplash.com/photo-1580128660010-fd027e1e1a6a?q=80&w=800&auto=format&fit=crop",
+                media: "BCB",
+                fullText: "BCB rassemble les informations publiques relatives à Donald Trump et à son activité politique."
             },
             {
-                badge: "Cyclisme",
-                category: "Cyclisme",
-                title: "Optimiser sa position aérodynamique sans sacrifier le confort lombaire",
-                description: "Les recommandations des ostéopathes du circuit WorldTour pour les longues échappées.",
-                image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
-                media: "Velo Pro International",
-                fullText: "Trouver l'équilibre parfait entre rigidité du cadre, inclinaison de la selle et souplesse du tronc permet d'éviter les tensions dans le bas du dos lors des étapes de montagne excédant 200 kilomètres."
+                badge: "Économie",
+                category: "Économie",
+                title: "Économie : marchés, entreprises et tendances",
+                description: "Les informations économiques à suivre en France et dans le monde.",
+                image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=800&auto=format&fit=crop",
+                media: "BCB",
+                fullText: "Une sélection des principaux sujets économiques du moment."
             },
             {
-                badge: "Basketball",
-                category: "Basketball",
-                title: "La tactique secrète des franchises pour verrouiller le rebond défensif",
-                description: "Décryptage des schémas de box-out adoptés par les meilleurs coachs de la ligue nord-américaine.",
-                image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800&auto=format&fit=crop",
-                media: "Basket Tactique",
-                fullText: "Maîtriser le rebond défensif est la clé pour lancer des transitions offensives foudroyantes. Les entraîneurs analysent chaque centimètre carré de placement sous le cercle."
-            },
-            {
-                badge: "Tennis",
-                category: "Tennis",
-                title: "L'évolution des raquettes high-tech et leur impact sur la puissance",
-                description: "Comment les matériaux composites révolutionnent le jeu des jeunes prodiges sur le circuit.",
-                image: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=80&w=800&auto=format&fit=crop",
-                media: "TennisTech Mag",
-                fullText: "L'allègement des cadres couplé à des tamis élargis permet de générer des effets liftés dévastateurs tout en préservant le bras des joueurs lors des échanges prolongés."
-            },
-            {
-                badge: "Rugby",
-                category: "Rugby",
-                title: "Le combat des avants dans les rucks : décryptage vidéo",
-                description: "Analyse des duels d'impact lors du Tournoi des 6 Nations et des phases finales internationales.",
-                image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
-                media: "Ovalie News",
-                fullText: "La conquête au sol et la vitesse de libération du ballon sont les deux axes majeurs travaillés par les sélections pour déstabiliser les défenses hermétiques."
-            },
-            {
-                badge: "Natation",
-                category: "Natation",
-                title: "Technique de coulée : les secrets des champions olympiques",
-                description: "Étude biomécanique des battements sous l'eau après les virages en bassin de 50 mètres.",
-                image: "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=800&auto=format&fit=crop",
-                media: "Aquatic Pro",
-                fullText: "La phase sous-marine représente plus de 30% d'une course de sprint. Optimiser la position hydrodynamique permet de gagner de precieuses dixières de seconde."
-            },
-            {
-                badge: "Boxe",
-                category: "Boxe",
-                title: "La préparation mentale des combattants avant les championnats du monde",
-                description: "Gestion du stress, visualisation et concentration absolue dans les vestiaires.",
-                image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop",
-                media: "Fight Club Mag",
-                fullText: "Avant de monter sur le ring, les boxeurs professionnels utilisent des techniques de respiration profonde pour abaisser leur rythme cardiaque et canaliser leur adrénaline."
-            },
-            {
-                badge: "Skate",
-                category: "Skate",
-                title: "L'essor de la culture skate aux Jeux Olympiques : entre art et sport",
-                description: "Comment la discipline a conquis un nouveau public mondial sans perdre son âme urbaine.",
-                image: "https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?q=80&w=800&auto=format&fit=crop",
-                media: "Urban Glide",
-                fullText: "Le street et le park exigent une précision chirurgicale et une créativité de chaque instant. Les jeunes talents repoussent sans cesse les limites de la gravité sur les modules officiels."
-            },
-            {
-                badge: "Fitness",
-                category: "Fitness",
-                title: "Hypertrophie et récupération : le guide complet de la nutrition sportive",
-                description: "Répartition optimale des macronutriments pour maximiser la prise de muscle sèche.",
-                image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop",
-                media: "Fitness Lab",
-                fullTest: "L'apport protéique post-entraînement combiné à une bonne hydratation garantit une synthèse protéique maximale et réduit considérablement les courbatures."
-            },
-            {
-                badge: "Esport",
-                category: "Esport",
-                title: "Les réflexes de l'e-sport comparable à ceux des pilotes de chasse",
-                description: "Étude comparative sur les temps de réaction des pro-gamers lors des tournois internationaux.",
-                image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
-                media: "Esport Chronicle",
-                fullText: "Avec plus de 300 actions par minute sur les jeux de stratégie et de tir tactique, la concentration requise est totale et sollicite intensément le système nerveux central."
+                badge: "Politique",
+                category: "Politique",
+                title: "Politique : les décisions et débats à suivre",
+                description: "Les principaux sujets de politique française et internationale.",
+                image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=800&auto=format&fit=crop",
+                media: "BCB",
+                fullText: "Cette rubrique rassemble les principaux sujets politiques suivis par BCB."
             }
         ];
 
@@ -739,7 +646,7 @@
             lastname: "Dupont",
             pseudo: "@alex_bcb",
             email: "alexandre.dupont@bcb.com",
-            bio: "Passionné de sport, de running et de football. Toujours à l'affût des dernières actus internationales !",
+            bio: "Toujours à l'affût des dernières actualités françaises, américaines et internationales !",
             avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
         };
 
@@ -1008,7 +915,7 @@
             const resetBtn = document.getElementById('reset-filter-btn');
 
             heading.textContent = "Tendances";
-            subheading.textContent = "Les actualités internationales les plus consultées du moment.";
+            subheading.textContent = "Les actualités les plus consultées du moment.";
             resetBtn.classList.add('hidden');
 
             renderTrending(trendingNews);
@@ -1190,7 +1097,7 @@
             contentBox.style.transform = 'translateY(15px)';
 
             setTimeout(() => {
-                const news = sportsNews[currentSlideIndex];
+                const news = newsArticles[currentSlideIndex];
                 document.getElementById('hero-badge').textContent = news.badge;
                 document.getElementById('hero-source').textContent = "Source : " + news.media;
                 document.getElementById('hero-title').innerHTML = news.title.replace(' : ', '<br>');
@@ -1208,12 +1115,12 @@
         }
 
         function nextSlide() {
-            currentSlideIndex = (currentSlideIndex + 1) % sportsNews.length;
+            currentSlideIndex = (currentSlideIndex + 1) % newsArticles.length;
             updateSlideContent();
         }
 
         function prevSlide() {
-            currentSlideIndex = (currentSlideIndex - 1 + sportsNews.length) % sportsNews.length;
+            currentSlideIndex = (currentSlideIndex - 1 + newsArticles.length) % newsArticles.length;
             updateSlideContent();
         }
 
