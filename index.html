@@ -153,7 +153,7 @@
 
     <!-- HERO BANNER DYNAMIC NEWS SLIDER -->
     <header class="max-w-[1920px] mx-auto px-3 sm:px-4 md:px-8 py-4 sm:py-6">
-        <div id="hero-slider-container" class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg bg-neutral-900 group min-h-[480px] sm:min-h-[580px] md:min-h-[700px] flex flex-col justify-end p-5 sm:p-8 md:p-16 transition-all duration-700 select-none">
+        <div id="hero-slider-container" class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg bg-neutral-900 group min-h-[480px] cursor-grab active:cursor-grabbing sm:min-h-[580px] md:min-h-[700px] flex flex-col justify-end p-5 sm:p-8 md:p-16 transition-all duration-700 select-none">
             
             <!-- Background Image with dark overlay gradient & smooth scaling -->
             <div class="absolute inset-0 z-0 overflow-hidden">
@@ -184,7 +184,7 @@
 
             <!-- Carousel Controls at bottom right -->
             <div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20 flex items-center space-x-1.5 sm:space-x-2 bg-black/40 backdrop-blur-md p-1 sm:p-1.5 rounded-full border border-white/10 shadow-lg">
-                <button id="slider-pause-btn" onclick="togglePauseSlider()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" title="Pause / Lecture">
+                <button id="slider-pause-btn" onclick="togglePauseSlider()" aria-label="Mettre en pause la lecture automatique" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer" title="Pause / Lecture">
                     <i id="pause-icon" class="fa-solid fa-pause text-[10px] sm:text-xs"></i>
                 </button>
             </div>
@@ -1129,26 +1129,40 @@
 
         function initSwipeGestures() {
             const slider = document.getElementById('hero-slider-container');
-            let touchStartX = 0;
-            let touchEndX = 0;
+            let startX = 0;
+            let isDragging = false;
+
+            function moveTo(deltaX) {
+                if (Math.abs(deltaX) < 50) return;
+                if (deltaX < 0) nextSlide();
+                else prevSlide();
+            }
 
             slider.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
+                startX = e.changedTouches[0].screenX;
             }, { passive: true });
 
             slider.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
+                moveTo(e.changedTouches[0].screenX - startX);
             }, { passive: true });
 
-            function handleSwipe() {
-                if (touchEndX < touchStartX - 50) {
-                    nextSlide();
-                }
-                if (touchEndX > touchStartX + 50) {
-                    prevSlide();
-                }
-            }
+            slider.addEventListener('pointerdown', (e) => {
+                if (e.pointerType === 'mouse' && e.button !== 0) return;
+                if (e.target.closest('button, a')) return;
+                startX = e.clientX;
+                isDragging = true;
+                slider.setPointerCapture?.(e.pointerId);
+            });
+
+            slider.addEventListener('pointerup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                moveTo(e.clientX - startX);
+            });
+
+            slider.addEventListener('pointercancel', () => {
+                isDragging = false;
+            });
         }
 
         function updateSlideContent() {
@@ -1192,10 +1206,17 @@
         function togglePauseSlider() {
             isPaused = !isPaused;
             const icon = document.getElementById('pause-icon');
+            const button = document.getElementById('slider-pause-btn');
             if (isPaused) {
                 clearInterval(slideInterval);
+                icon.className = 'fa-solid fa-play text-[10px] sm:text-xs';
+                button.title = 'Reprendre la lecture';
+                button.setAttribute('aria-label', 'Reprendre la lecture automatique');
             } else {
                 startInterval();
+                icon.className = 'fa-solid fa-pause text-[10px] sm:text-xs';
+                button.title = 'Mettre en pause';
+                button.setAttribute('aria-label', 'Mettre en pause la lecture automatique');
             }
         }
 
