@@ -157,7 +157,7 @@
             
             <!-- Background Image with dark overlay gradient & smooth scaling -->
             <div class="absolute inset-0 z-0 overflow-hidden">
-                <img id="hero-bg-img" src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1800&auto=format&fit=crop" 
+                <img id="hero-bg-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1800&auto=format&fit=crop" 
                      alt="Actualité internationale" 
                      class="w-full h-full object-cover object-center opacity-85 scale-100 group-hover:scale-105 transition-transform duration-1000">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
@@ -166,18 +166,18 @@
             <!-- Content Overlay with entry animation -->
             <div id="hero-content-box" class="relative z-10 max-w-2xl text-white slide-fade pb-12 sm:pb-0">
                 <div class="flex items-center space-x-2 mb-3">
-                    <span id="hero-badge" class="inline-block bg-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full tracking-wider shadow-sm">Football • Ligue des Champions</span>
-                    <span id="hero-source" class="inline-block bg-black/40 backdrop-blur-md text-gray-300 text-[10px] sm:text-xs font-semibold px-3 py-1.5 rounded-full border border-white/10">Source : L'Équipe Internationale</span>
+                    <span id="hero-badge" class="inline-block bg-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full tracking-wider shadow-sm">FRANCE • SÉCURITÉ</span>
+                    <span id="hero-source" class="inline-block bg-black/40 backdrop-blur-md text-gray-300 text-[10px] sm:text-xs font-semibold px-3 py-1.5 rounded-full border border-white/10">Source : Élysée • 18 septembre 2026</span>
                 </div>
                 <h1 id="hero-title" class="font-anton text-2xl sm:text-4xl md:text-6xl uppercase tracking-tight leading-[1.05] sm:leading-[0.9] mb-3 sm:mb-6 drop-shadow-md">
-                    L'ÈRE KYLIAN MBAPPÉ AU REAL MADRID
+                    MACRON DEMANDE UN PLAN POUR PROTÉGER LES INFRASTRUCTURES CRITIQUES
                 </h1>
                 <p id="hero-desc" class="text-xs sm:text-sm md:text-base text-gray-200 font-medium mb-5 sm:mb-8 max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none">
-                    Le capitaine des Bleus continue son aventure madrilène sous les projecteurs du Bernabeu. Entre attentes colossales et premiers pas en Liga.
+                    Emmanuel Macron demande au gouvernement de préparer un plan pour renforcer la protection des infrastructures critiques face aux drones et aux cyberattaques.
                 </p>
                 <div>
                     <button id="hero-btn" onclick='openArticle(newsArticles[currentSlideIndex])' class="bg-white hover:bg-gray-200 text-black font-bold px-6 py-3 sm:px-8 sm:py-3.5 rounded-full text-xs sm:text-sm uppercase tracking-wide transition-all duration-300 shadow-xl hover:scale-105 cursor-pointer">
-                        Voir les temps forts
+                        Lire l'article
                     </button>
                 </div>
             </div>
@@ -537,44 +537,104 @@
     <script>
         let newsArticles = [
             {
-                badge: "USA • Actualité",
-                category: "USA",
-                title: "LES ÉTATS-UNIS AU CŒUR DE L’ACTUALITÉ",
-                description: "Retrouvez les principales informations politiques, économiques et sociales venues des États-Unis.",
-                image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?q=80&w=1800&auto=format&fit=crop",
-                buttonText: "Lire l'article",
-                media: "BCB",
-                fullText: "BCB rassemble ici les informations majeures concernant les États-Unis, avec un traitement consacré aux faits et aux développements importants."
-            },
-            {
-                badge: "France • Actualité",
+                badge: "FRANCE • SÉCURITÉ",
                 category: "France",
-                title: "L’ACTUALITÉ FRANÇAISE EN UN COUP D’ŒIL",
-                description: "Politique, économie, société et grands événements : les informations essentielles en France.",
+                title: "MACRON DEMANDE UN PLAN POUR PROTÉGER LES INFRASTRUCTURES CRITIQUES",
+                description: "Emmanuel Macron demande au gouvernement de préparer un plan pour renforcer la protection des infrastructures critiques face aux drones et aux cyberattaques.",
                 image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1800&auto=format&fit=crop",
                 buttonText: "Lire l'article",
-                media: "BCB",
-                fullText: "BCB propose un aperçu des principaux événements et sujets qui marquent l'actualité française."
+                media: "Élysée • 18 septembre 2026",
+                fullText: "Le 18 septembre 2026, Emmanuel Macron a réuni les chefs des partis représentés au Parlement pour évoquer les conséquences de la situation internationale. L'Élysée indique que la France renforce sa vigilance face aux menaces hybrides et prépare notamment un plan de protection des infrastructures critiques et des sites sensibles."
             },
             {
-                badge: "International • Monde",
-                category: "International",
-                title: "CE QUI SE PASSE DANS LE MONDE",
-                description: "Les événements internationaux qui font l'actualité, de l'Europe aux autres grandes régions du monde.",
-                image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=1800&auto=format&fit=crop",
-                buttonText: "Lire l'article",
-                media: "BCB",
-                fullText: "La rubrique International rassemble les événements et évolutions majeurs observés à travers le monde."
-            },
-            {
-                badge: "Donald Trump • USA",
+                badge: "USA • DONALD TRUMP",
                 category: "Donald Trump",
-                title: "DONALD TRUMP : LES DERNIÈRES INFORMATIONS",
-                description: "Retrouvez les déclarations, décisions et événements liés à Donald Trump dans l'actualité américaine.",
+                title: "TRUMP ANNONCE L'EXCLUSION DE CNN, MSNBC ET POLITICO DE LA MAISON-BLANCHE",
+                description: "Donald Trump a annoncé le 18 septembre l'interdiction d'accès à la Maison-Blanche pour CNN, MSNOW et Politico, en critiquant leur couverture.",
                 image: "https://images.unsplash.com/photo-1580128660010-fd027e1e1a6a?q=80&w=1800&auto=format&fit=crop",
                 buttonText: "Lire l'article",
-                media: "BCB",
-                fullText: "Cette rubrique rassemble les informations publiques et vérifiées concernant Donald Trump et son activité politique."
+                media: "Associated Press • 18 septembre 2026",
+                fullText: "Associated Press rapporte que Donald Trump a annoncé vendredi l'interdiction d'accès à la Maison-Blanche pour CNN, MSNOW et Politico. Il a présenté cette décision comme une réponse à ce qu'il considère comme une couverture défavorable et a indiqué que d'autres médias pourraient être concernés."
+            },
+            {
+                badge: "USA • ÉCONOMIE",
+                category: "Économie",
+                title: "WALL STREET REBONDIT APRÈS LA DÉCISION DE LA FED",
+                description: "Les trois grands indices américains ont fortement progressé jeudi, aidés par le recul du pétrole et des rendements obligataires.",
+                image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "Reuters • 17 septembre 2026",
+                fullText: "Reuters rapporte que Wall Street a rebondi jeudi 17 septembre. Le Nasdaq a mené la hausse, tandis que le recul des prix du pétrole et des rendements des obligations américaines a contribué à améliorer le sentiment des investisseurs après la décision de la Réserve fédérale."
+            },
+            {
+                badge: "FRANCE • ÉNERGIE",
+                category: "France",
+                title: "LA FRANCE PRÉPARE UNE RÉPONSE À LA HAUSSE DES PRIX DE L'ÉNERGIE",
+                description: "Le gouvernement français travaille sur la sécurisation des approvisionnements et la protection des ménages et des filières économiques.",
+                image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "Élysée • 18 septembre 2026",
+                fullText: "L'Élysée indique que le gouvernement doit sécuriser les capacités d'importation et de production, renforcer les chaînes logistiques et accompagner les Français ainsi que les filières économiques face à la hausse des prix de l'énergie."
+            },
+            {
+                badge: "INTERNATIONAL • ÉNERGIE",
+                category: "International",
+                title: "LE G7 VA SE RÉUNIR SUR LA CRISE ÉNERGÉTIQUE",
+                description: "Les pays du G7 doivent renforcer leur coordination sur les stocks d'énergie et la sécurité des approvisionnements.",
+                image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "Élysée • 18 septembre 2026",
+                fullText: "Selon l'Élysée, le G7 se réunira dans les prochaines semaines pour renforcer la coordination entre partenaires sur les niveaux de stocks d'énergie. La France poursuit également ses discussions sur les hydrocarbures et le gaz naturel liquéfié."
+            },
+            {
+                badge: "INTERNATIONAL • RUSSIE",
+                category: "International",
+                title: "LA RUSSIE SIGNALE DE NOMBREUX DRONES AU-DESSUS DE SON TERRITOIRE",
+                description: "Les autorités russes ont fait état de drones interceptés alors que les élections législatives ont commencé dans le pays.",
+                image: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "TF1 Info • 18 septembre 2026",
+                fullText: "Des autorités russes ont annoncé des interceptions de drones dans plusieurs zones du pays. Ces événements interviennent alors que les élections législatives russes débutent le 18 septembre."
+            },
+            {
+                badge: "INTERNATIONAL • MOYEN-ORIENT",
+                category: "International",
+                title: "LES TENSIONS AUTOUR DU DÉTROIT D'ORMUZ RESTENT AU CENTRE DE L'ACTUALITÉ",
+                description: "Les tensions dans la région continuent d'affecter le transport maritime et les marchés de l'énergie.",
+                image: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "TF1 Info • 18 septembre 2026",
+                fullText: "Le détroit d'Ormuz reste un point majeur des tensions énergétiques internationales. Les perturbations du trafic maritime et les risques pesant sur les approvisionnements continuent d'être suivis par les marchés."
+            },
+            {
+                badge: "USA • IRAN",
+                category: "Donald Trump",
+                title: "TRUMP DIT DEVOIR PRENDRE UNE « GRANDE DÉCISION » SUR L'IRAN",
+                description: "Le président américain a déclaré qu'il réfléchissait à la suite à donner à la situation avec l'Iran.",
+                image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "Anadolu Agency • 18 septembre 2026",
+                fullText: "Donald Trump a déclaré jeudi qu'il devait prendre une décision importante concernant l'Iran. Cette déclaration intervient dans un contexte de fortes tensions au Moyen-Orient et à l'approche de l'Assemblée générale des Nations unies."
+            },
+            {
+                badge: "USA • DÉFENSE",
+                category: "USA",
+                title: "WASHINGTON APPROUVE UNE POSSIBLE VENTE DE F-35 À L'ARABIE SAOUDITE",
+                description: "Les États-Unis ont approuvé une éventuelle vente d'avions de combat F-35 à l'Arabie saoudite.",
+                image: "https://images.unsplash.com/photo-1553484771-371a605b060b?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "Anadolu Agency • 18 septembre 2026",
+                fullText: "Les États-Unis ont approuvé une éventuelle vente de F-35 à l'Arabie saoudite, annoncée pour une valeur de 24,3 milliards de dollars. L'annonce figure parmi les principaux sujets de défense et de politique internationale suivis le 18 septembre."
+            },
+            {
+                badge: "EUROPE • TECHNOLOGIE",
+                category: "International",
+                title: "L'EUROPE CHERCHE UNE ALTERNATIVE À STARLINK POUR LA TÉLÉPHONIE SATELLITE",
+                description: "Les grands opérateurs européens cherchent à développer une solution européenne de téléphonie mobile par satellite.",
+                image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1800&auto=format&fit=crop",
+                buttonText: "Lire l'article",
+                media: "ARCEP • 18 septembre 2026",
+                fullText: "La revue de presse de l'ARCEP du 18 septembre rapporte que les grands opérateurs européens travaillent à une alternative européenne à Starlink pour la téléphonie mobile par satellite."
             }
         ];
 
@@ -895,7 +955,7 @@
             subheading.textContent = "Tous les articles et actualités concernant " + categoryName;
             resetBtn.classList.remove('hidden');
 
-            const allItems = [...sportsNews, ...trendingNews];
+            const allItems = [...newsArticles, ...trendingNews];
             const filtered = allItems.filter(item => 
                 item.category.toLowerCase().includes(categoryName.toLowerCase()) || 
                 item.badge.toLowerCase().includes(categoryName.toLowerCase()) ||
@@ -937,7 +997,7 @@
             suggestions.classList.add('hidden');
             titleElem.textContent = `RÉSULTATS POUR "${query.toUpperCase()}"`;
 
-            const allItems = [...sportsNews, ...trendingNews];
+            const allItems = [...newsArticles, ...trendingNews];
 
             const filtered = allItems.filter(item => 
                 item.title.toLowerCase().includes(query) || 
@@ -1056,7 +1116,7 @@
         function initSlider() {
             const dotsContainer = document.getElementById('slider-dots');
             dotsContainer.innerHTML = '';
-            sportsNews.forEach((_, idx) => {
+            newsArticles.forEach((_, idx) => {
                 const dot = document.createElement('span');
                 dot.className = `w-2 h-2 rounded-full transition-all duration-500 cursor-pointer ${idx === currentSlideIndex ? 'bg-white w-6' : 'bg-white/50'}`;
                 dot.onclick = () => goToSlide(idx);
